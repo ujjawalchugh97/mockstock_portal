@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <link href="Main.css" rel="stylesheet" />
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="JQUERY%20Main.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <div id="main"></div>
+
+        <div id="loginform">
+            <h1>LOGIN</h1>
+            <input type="email" placeholder="Email" />
+            <br>
+            <input type="password" placeholder="Password" />
+            <br>
+            <button>LOGIN</button>
+        </div>
+
+        <div id="signupform">
+            <h1>SIGN UP</h1>
+            <input type="text" placeholder="Full Name" />
+            <br>
+            <input type="email" placeholder="Email" />
+            <br>
+            <input type="password" placeholder="Password" />
+            <br>
+            <button>SIGN UP</button>
+        </div>
+
+        <div id="login_msg">Have an account?</div>
+        <div id="signup_msg">Don't have an account?</div>
+
+        <button id="login_btn">LOGIN</button>
+        <button id="signup_btn">SIGN UP</button>
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#signup_btn").click(function () {
+                $("#main").animate({ left: "22.5%" }, 400);
+                $("#main").animate({ left: "30%" }, 500);
+                $("#loginform").css("visibility", "hidden");
+                $("#loginform").animate({ left: "25%" }, 400);
+
+                $("#signupform").animate({ left: "17%" }, 400);
+                $("#signupform").animate({ left: "30%" }, 500);
+                $("#signupform").css("visibility", "visible");
+            });
+
+            $("#login_btn").click(function () {
+                $("#main").animate({ left: "77.5%" }, 400);
+                $("#main").animate({ left: "70%" }, 500);
+                $("#signupform").css("visibility", "hidden");
+                $("#signupform").animate({ left: "75%" }, 400);
+
+                $("#loginform").animate({ left: "83.5%" }, 400);
+                $("#loginform").animate({ left: "70%" }, 500);
+                $("#loginform").css("visibility", "visible");
+            });
+        });
+    </script>
+</body>
+
+</html>
