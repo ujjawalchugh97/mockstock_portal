@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'portal/index'
+
    root 'home#index'
   get 'home/index'
 
