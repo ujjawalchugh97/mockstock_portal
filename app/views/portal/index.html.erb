@@ -1,2 +1,1685 @@
-<h1>Portal#index</h1>
-<p>Find me in app/views/portal/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MockStock - Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="rupee.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+</head>
+
+<body>
+    <nav>
+        <div class="ui left demo vertical inverted sidebar labeled icon menu visible" style="width: 250px;">
+            <a class="item" href="#top-nav">
+                <i class="facebook f icon" style="display: inline;"></i>
+                <i class="microsoft edge icon" style="display: inline;"></i>
+                <i class="scribd icon" style="display: inline;"></i>
+                <h3>TradeVerse</h3>
+            </a>
+            <a class="item">
+                <img style="margin: 10px auto;" class="ui tiny circular image" src="matthew.png">
+                <h3>Team Name</h3>
+            </a>
+            <a class="item" href="#portfolio">
+                <i class="block layout icon"></i>
+                Portfolio
+            </a>
+            <a class="item" href="#nsit-coin-holding">
+                <i class="rupee icon"></i>
+                Nsit Coin Holding
+            </a>
+            <a class="item" href="#market">
+                <i class="money icon"></i>
+                Market
+            </a>
+            <a class="item" href="#nsit-coin">
+                <i class="bitcoin icon"></i>
+                Nsit Coin
+            </a>
+            <a class="item" href="#foreign-exchange">
+                <i class="exchange icon"></i>
+                Foreign Exchange
+            </a>
+            <!--<a class="item"-->
+            <a rel="nofollow" data-method="delete" href="/users/sign_out" class = "item">
+                <i class="power red icon"></i>
+                <!--%= link_to('Logout', destroy_user_session_path, method: :delete) %-->
+            Logout</a>
+            <!--/a-->
+        </div>
+        <div class="ui" id="top-nav">
+            <div class="ui relaxed  grid" style="background-color: #F2F2F2; ">
+                <div class="seven column row" style=" padding-left: 280px !important; padding-left: 50px;">
+                    <div class="column ui iverted segment top-nav-box">
+                        <div>
+                            <i class="green big angle up icon"></i>
+                            <h4 style="font-family: 'Digital-7', sans-serif !important; display: inline; position: relative; top: 2px;">Share Name</h4>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Digital-7', sans-serif !important; display: inline;">$ 101010</h4>
+                        </div>
+                    </div>
+                    <div class="column ui iverted segment top-nav-box">
+                        <div>
+                            <i class="red big angle down icon"></i>
+                            <h4 style="font-family: 'Digital-7', sans-serif !important; display: inline; position: relative; top: 2px;">Share Name</h4>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Digital-7', sans-serif !important; display: inline;">$ 101010</h4>
+                        </div>
+                    </div>
+                    <div class="column ui iverted segment top-nav-box">
+                        <div>
+                            <i class="green big angle up icon"></i>
+                            <h4 style="font-family: 'Digital-7', sans-serif !important; display: inline; position: relative; top: 2px;">Share Name</h4>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Digital-7', sans-serif !important; display: inline;">$ 101010</h4>
+                        </div>
+                    </div>
+                    <div class="column ui iverted segment top-nav-box">
+                        <div>
+                            <i class="green big angle up icon"></i>
+                            <h4 style="font-family: 'Digital-7', sans-serif !important; display: inline; position: relative; top: 2px;">Share Name</h4>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Digital-7', sans-serif !important; display: inline;">$ 101010</h4>
+                        </div>
+                    </div>
+                    <div class="column ui iverted segment top-nav-box">
+                        <div>
+                            <i class="green big angle up icon"></i>
+                            <h4 style="font-family: 'Digital-7', sans-serif !important; display: inline; position: relative; top: 2px;">Share Name</h4>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Digital-7', sans-serif !important; display: inline;">$ 101010</h4>
+                        </div>
+                    </div>
+                    <div class="column ui iverted segment top-nav-box">
+                        <div>
+                            <i class="green big angle up icon"></i>
+                            <h4 style="font-family: 'Digital-7', sans-serif !important; display: inline; position: relative; top: 2px;">Share Name</h4>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Digital-7', sans-serif !important; display: inline;">$ 101010</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <!-- 4 middle card starts -->
+        <div class="ui four grid centered center" id="portfolio" style="margin-top: 30px; margin-left: 220px;">
+            <h1 style="font-family: 'Raleway', sans-serif !important; font-size: 35px; font-weight: 100; letter-spacing: 0.5em;">PORTFOLIO</h1>
+            <div class="row">
+                <div class="ui special cards">
+                    <div class="card mid-cards">
+                        <div class="blurring dimmable image">
+                            <div class="ui dimmer">
+                                <div class="content">
+                                    <div class="center">
+                                        <div class="ui inverted button more-info-nse">More Info</div>
+                                        <div class="ui modal info small nse" style="text-align: center;">
+                                            <i class="close icon"></i>
+                                            <div class="header">
+                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NSE</h1>
+                                            </div>
+                                            <table class="ui very basic collapsing celled table" style="margin: 30px auto; text-align: center;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Stock Name</th>
+                                                        <th>Investment</th>
+                                                        <th>Current Value</th>
+                                                        <th>Volume</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">A
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">B
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">C
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">D
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="actions">
+                                                <div class="ui positive right labeled icon button">
+                                                    Go Back
+                                                    <i class="reply icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="height: 120px; background-color: #20A8D8!important;">
+                                <h1 style="position: relative; top: 50%; transform: translate(0, -50%); color: beige; font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NSE</h1>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="cur-value">
+                                <span class="date" style="font-size: 16px;">Current Value:
+                                    <i class="rupee icon"></i>101010</span>
+                            </div>
+                            <div class="cur-value">
+                                <span class="date" style="font-size: 16px;">Cash:
+                                    <i class="rupee icon"></i>101010</span>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <a>
+                                <i class="large teal info circle icon"></i>
+                                <span class="more-info-nse">More Info</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card mid-cards">
+                        <div class="blurring dimmable image">
+                            <div class="ui dimmer">
+                                <div class="content">
+                                    <div class="center">
+                                        <div class="ui inverted button more-info-nasdaq">More Info</div>
+                                        <div class="ui modal info small nasdaq" style="text-align: center;">
+                                            <i class="close icon"></i>
+                                            <div class="header">
+                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NASDAQ</h1>
+                                            </div>
+                                            <table class="ui very basic collapsing celled table" style="margin: 30px auto; text-align: center;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Stock Name</th>
+                                                        <th>Investment</th>
+                                                        <th>Current Value</th>
+                                                        <th>Volume</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">A
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">B
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">C
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">D
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="actions">
+                                                <div class="ui positive right labeled icon button">
+                                                    Go Back
+                                                    <i class="reply icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="height: 120px; background-color: #F86C6B!important;">
+                                <h1 style="position: relative; top: 50%; transform: translate(0, -50%); color: beige; font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NASDAQ</h1>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="cur-value">
+                                <span class="date" style="font-size: 16px;">Current Value:
+                                    <i class="dollar icon"></i>101010</span>
+                            </div>
+                            <div class="cur-value">
+                                <span class="date" style="font-size: 16px;">Cash:
+                                    <i class="dollar icon"></i>101010</span>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <a>
+                                <i class="large teal info circle icon"></i>
+                                <span class="more-info-nasdaq">More Info</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card mid-cards">
+                        <div class="blurring dimmable image">
+                            <div class="ui dimmer">
+                                <div class="content">
+                                    <div class="center">
+                                        <div class="ui inverted button more-info-lse">More Info</div>
+                                        <div class="ui modal info small lse" style="text-align: center;">
+                                            <i class="close icon"></i>
+                                            <div class="header">
+                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">London Stock Exchange</h1>
+                                            </div>
+                                            <table class="ui very basic collapsing celled table" style="margin: 30px auto; text-align: center;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Stock Name</th>
+                                                        <th>Investment</th>
+                                                        <th>Current Value</th>
+                                                        <th>Volume</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">A
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">B
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">C
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">D
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="actions">
+                                                <div class="ui positive right labeled icon button">
+                                                    Go Back
+                                                    <i class="reply icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="height: 120px; background-color: #4DBD74!important;">
+                                <h1 style="position: relative; top: 50%; transform: translate(0, -50%); color: beige; font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">LSE</h1>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="cur-value">
+                                <span class="date" style="font-size: 16px;">Current Value:
+                                    <i class="pound icon"></i>101010</span>
+                            </div>
+                            <div class="cur-value">
+                                <span class="date" style="font-size: 16px;">Cash:
+                                    <i class="pound icon"></i>101010</span>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <a>
+                                <i class="large teal info circle icon"></i>
+                                <span class="more-info-lse">More Info</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card mid-cards">
+                        <div class="blurring dimmable image">
+                            <div class="ui dimmer">
+                                <div class="content">
+                                    <div class="center">
+                                        <div class="ui inverted button more-info-nikkie">More Info</div>
+                                        <div class="ui modal info small nikkie" style="text-align: center;">
+                                            <i class="close icon"></i>
+                                            <div class="header">
+                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NIKKEI</h1>
+                                            </div>
+                                            <table class="ui very basic collapsing celled table" style="margin: 30px auto; text-align: center;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Stock Name</th>
+                                                        <th>Investment</th>
+                                                        <th>Current Value</th>
+                                                        <th>Volume</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">A
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">B
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">C
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4 class="ui header">
+                                                                <div class="content">
+                                                                    <div class="sub header">D
+                                                                    </div>
+                                                                </div>
+                                                            </h4>
+                                                        </td>
+                                                        <td>
+                                                            22
+                                                        </td>
+                                                        <td>22</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="actions">
+                                                <div class="ui positive right labeled icon button">
+                                                    Go Back
+                                                    <i class="reply icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="height: 120px; background-color: #E5AD06!important;">
+                                <h1 style="position: relative; top: 50%; transform: translate(0, -50%); color: beige; font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NIKKEI</h1>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="cur-value">
+                                <span class="date" style="font-size: 16px;">Current Value:
+                                    <i class="yen icon"></i>101010</span>
+                            </div>
+                            <div class="cur-value">
+                                <span class="date" style="font-size: 16px;">Cash:
+                                    <i class="yen icon"></i>101010</span>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <a>
+                                <i class="large teal info circle icon"></i>
+                                <span class="more-info-nikkie">More Info</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 4 middle cards ends -->
+
+        <div class="ui divider" style="margin-top: 60px;"></div>
+
+        <!-- NSIT coin starts -->
+        <div class="ui grid centered" id="nsit-coin-holding" style="margin-left: 250px; margin-top: 60px; margin-bottom: 50px;">
+            <div class="four column row centered">
+                <div class="two wide column coin">
+                    <i class="dollar inverted circular icon" style="font-size: 40px; position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+                </div>
+                <div class="ten wide column cur-holding">
+                    <h1 style="margin-top:20px; margin-bottom: 50px; text-align: center; font-family: 'Raleway', sans-serif !important; letter-spacing: 0.1em; font-weight: 100;">NSIT Coin Holding:
+                        <em>101010</em>
+                    </h1>
+                    <div class="ui four grid centered">
+                        <div class="three wide column nsit-coin-value" style="text-align: center;">
+                            <h1>
+                                <i class="rupee icon"></i>
+                            </h1>
+                            <span class="date" style="font-size: 13px;">Cur. Value:
+                                <i class="rupee icon"></i>101010</span>
+                            <br>
+                            <br>
+                            <span class="date" style="font-size: 13px;">Investment:
+                                <i class="rupee icon"></i>101010</span>
+
+                        </div>
+                        <div class="three wide column nsit-coin-value" style="text-align: center;">
+                            <h1>
+                                <i class="dollar icon"></i>
+                            </h1>
+                            <span class="date" style="font-size: 13px;">Cur. Value:
+                                <i class="dollar icon"></i>101010</span>
+                            <br>
+                            <br>
+                            <span class="date" style="font-size: 13px;">Investment:
+                                <i class="dollar icon"></i>101010</span>
+
+                        </div>
+                        <div class="three wide column nsit-coin-value" style="text-align: center;">
+                            <h1>
+                                <i class="pound icon"></i>
+                            </h1>
+                            <span class="date" style="font-size: 13px;">Cur. Value:
+                                <i class="pound icon"></i>101010</span>
+                            <br>
+                            <br>
+                            <span class="date" style="font-size: 13px;">Investment:
+                                <i class="pound icon"></i>101010</span>
+
+                        </div>
+                        <div class="three wide column nsit-coin-value" style="text-align: center;">
+                            <h1>
+                                <i class="yen icon"></i>
+                            </h1>
+                            <span class="date" style="font-size: 13px;">Cur. Value:
+                                <i class="yen icon"></i>101010</span>
+                            <br>
+                            <br>
+                            <span class="date" style="font-size: 13px;">Investment:
+                                <i class="yen icon"></i>101010</span>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="two wide column coin">
+                    <i class="dollar inverted circular icon" style="font-size: 40px; position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+                </div>
+            </div>
+        </div>
+        <!-- NSIT coin ends -->
+        <div class="ui divider" style="margin-top: 60px;"></div>
+        <!-- MARKET STARTS HERE -->
+        <div class="ui four grid centered center" id="market" style="margin-top: 30px; margin-left: 250px; margin-bottom: 60px;">
+            <h1 style="font-family: 'Raleway', sans-serif !important; font-size: 35px; font-weight: 100; letter-spacing: 0.5em;">MARKET</h1>
+            <div class="row">
+                <div class="fourteen wide column">
+                    <div class="ui styled fluid accordion" style="text-align: left;">
+                        <div class="active title">
+                            <i class="dropdown icon"></i>
+                            National Stock Exchange (NSE)
+                            <span style="float: right;">Currency:
+                                <i class="rupee icon"></i>
+                            </span>
+                        </div>
+                        <div class="active content">
+                            <table class="ui blue table">
+                                <thead>
+                                    <tr>
+                                        <th>Scrip</th>
+                                        <th>Comapany Name</th>
+                                        <th>Current Price</th>
+                                        <th>Last Volume</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0101</td>
+                                        <td>Apple Inc.</td>
+                                        <td>400</td>
+                                        <td>20
+                                            <span style="float: right;">
+                                                <button class="ui inverted green button buy-btn">BUY</button>
+                                                <button class="ui inverted red button sell-btn">SELL</button>
+                                                <button class="ui inverted orange button short-btn">SHORT</button>
+                                                <div class="ui modal tiny buy">
+                                                    <i class="close icon"></i>
+                                                    <div class="header">
+                                                        Buy Share
+                                                    </div>
+                                                    <div class="image content">
+
+                                                        <div class="description">
+                                                            <div class="ui header">
+                                                                <div class="ui breadcrumb market-modal">
+                                                                    <a class="section">National Stock Exchange</a>
+                                                                    <i class="right angle icon divider"></i>
+                                                                    <a class="section">Apple Inc.</a>
+                                                                </div>
+                                                            </div>
+                                                            <table class="ui very basic collapsing celled table market-modal-table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h4 class="ui image header">
+
+                                                                                <div class="content">
+                                                                                    <div class="sub header">Current Price
+                                                                                    </div>
+                                                                                </div>
+                                                                            </h4>
+                                                                        </td>
+                                                                        <td class="model-table-adjustment">
+                                                                            <i class="icon rupee"></i>101010
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h4 class="ui image header">
+
+                                                                                <div class="content">
+                                                                                    <div class="sub header">Last Traded Volume
+                                                                                    </div>
+                                                                                </div>
+                                                                            </h4>
+                                                                        </td>
+                                                                        <td>
+                                                                            101010
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h4 class="ui image header">
+
+                                                                                <div class="content">
+                                                                                    <div class="sub header">Quantity
+                                                                                    </div>
+                                                                                </div>
+                                                                            </h4>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="ui input focus">
+                                                                                <input type="text" placeholder="Enter Quantity">
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h4 class="ui image header">
+
+                                                                                <div class="content">
+                                                                                    <div class="sub header">Amount
+                                                                                    </div>
+                                                                                </div>
+                                                                            </h4>
+                                                                        </td>
+                                                                        <td>
+                                                                            <i class="icon rupee"></i>101010
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <div class="ui buttons">
+                                                            <button class="ui button deny red">Cancel</button>
+                                                            <div class="or"></div>
+                                                            <button class="ui positive button">Buy</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ui modal tiny sell">
+                                                    <i class="close icon"></i>
+                                                    <div class="header">
+                                                        Sell Share
+                                                    </div>
+                                                    <div class="image content">
+
+                                                        <div class="description">
+                                                            <div class="ui header">
+                                                                <div class="ui breadcrumb market-modal">
+                                                                    <a class="section">National Stock Exchange</a>
+                                                                    <i class="right angle icon divider"></i>
+                                                                    <a class="section">Apple Inc.</a>
+                                                                </div>
+                                                            </div>
+                                                            <table class="ui very basic collapsing celled table market-modal-table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h4 class="ui image header">
+
+                                                                                <div class="content">
+                                                                                    <div class="sub header">Current Price
+                                                                                    </div>
+                                                                                </div>
+                                                                            </h4>
+                                                                        </td>
+                                                                        <td class="model-table-adjustment">
+                                                                            <i class="icon rupee"></i>101010
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h4 class="ui image header">
+
+                                                                                <div class="content">
+                                                                                    <div class="sub header">Last Traded Volume
+                                                                                    </div>
+                                                                                </div>
+                                                                            </h4>
+                                                                        </td>
+                                                                        <td>
+                                                                            101010
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h4 class="ui image header">
+
+                                                                                <div class="content">
+                                                                                    <div class="sub header">Quantity
+                                                                                    </div>
+                                                                                </div>
+                                                                            </h4>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="ui input focus">
+                                                                                <input type="text" placeholder="Enter Quantity">
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h4 class="ui image header">
+
+                                                                                <div class="content">
+                                                                                    <div class="sub header">Amount
+                                                                                    </div>
+                                                                                </div>
+                                                                            </h4>
+                                                                        </td>
+                                                                        <td>
+                                                                            <i class="icon rupee"></i>101010
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <div class="ui buttons">
+                                                            <button class="ui button deny red">Cancel</button>
+                                                            <div class="or"></div>
+                                                            <button class="ui positive button">Sell</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ui modal tiny short">
+                                                    <i class="close icon"></i>
+                                                    <div class="header">
+                                                        Short Share
+                                                    </div>
+                                                    <div class="image content">
+
+                                                        <div class="description">
+                                                            <div class="ui header">
+                                                                <div class="ui breadcrumb market-modal">
+                                                                    <a class="section">National Stock Exchange</a>
+                                                                    <i class="right angle icon divider"></i>
+                                                                    <a class="section">Apple Inc.</a>
+                                                                </div>
+                                                            </div>
+                                                            <table class="ui very basic collapsing celled table market-modal-table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h4 class="ui image header">
+
+                                                                                <div class="content">
+                                                                                    <div class="sub header">Current Price
+                                                                                    </div>
+                                                                                </div>
+                                                                            </h4>
+                                                                        </td>
+                                                                        <td class="model-table-adjustment">
+                                                                            <i class="icon rupee"></i>101010
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h4 class="ui image header">
+
+                                                                                <div class="content">
+                                                                                    <div class="sub header">Last Traded Volume
+                                                                                    </div>
+                                                                                </div>
+                                                                            </h4>
+                                                                        </td>
+                                                                        <td>
+                                                                            101010
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h4 class="ui image header">
+
+                                                                                <div class="content">
+                                                                                    <div class="sub header">Quantity
+                                                                                    </div>
+                                                                                </div>
+                                                                            </h4>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="ui input focus">
+                                                                                <input type="text" placeholder="Enter Quantity">
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h4 class="ui image header">
+
+                                                                                <div class="content">
+                                                                                    <div class="sub header">Amount
+                                                                                    </div>
+                                                                                </div>
+                                                                            </h4>
+                                                                        </td>
+                                                                        <td>
+                                                                            <i class="icon rupee"></i>101010
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <div class="ui buttons">
+                                                            <button class="ui button deny red">Cancel</button>
+                                                            <div class="or"></div>
+                                                            <button class="ui positive button">Short</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1010</td>
+                                        <td>Ikea</td>
+                                        <td>900</td>
+                                        <td>30
+                                            <span style="float: right;">
+                                                <button class="ui inverted green button buy-btn">BUY</button>
+                                                <button class="ui inverted red button sell-btn">SELL</button>
+                                                <button class="ui inverted orange button short-btn">SHORT</button>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            NASDAQ
+                            <span style="float: right;">Currency:
+                                <i class="pound icon"></i>
+                            </span>
+                        </div>
+                        <div class="content">
+                            <table class="ui orange table">
+                                <thead>
+                                    <tr>
+                                        <th>Scrip</th>
+                                        <th>Comapany Name</th>
+                                        <th>Current Price</th>
+                                        <th>Last Volume</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0101</td>
+                                        <td>Apple Inc.</td>
+                                        <td>400</td>
+                                        <td>20
+                                            <span style="float: right;">
+                                                <button class="ui inverted green button buy-btn">BUY</button>
+                                                <button class="ui inverted red button sell-btn">SELL</button>
+                                                <button class="ui inverted orange button short-btn">SHORT</button>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1010</td>
+                                        <td>Ikea</td>
+                                        <td>900</td>
+                                        <td>30
+                                            <span style="float: right;">
+                                                <button class="ui inverted green button buy-btn">BUY</button>
+                                                <button class="ui inverted red button sell-btn">SELL</button>
+                                                <button class="ui inverted orange button short-btn">SHORT</button>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            London Stock Exchange (LSE)
+                            <span style="float: right;">Currency:
+                                <i class="dollar icon"></i>
+                            </span>
+                        </div>
+                        <div class="content">
+                            <table class="ui green table">
+                                <thead>
+                                    <tr>
+                                        <th>Scrip</th>
+                                        <th>Comapany Name</th>
+                                        <th>Current Price</th>
+                                        <th>Last Volume</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0101</td>
+                                        <td>Apple Inc.</td>
+                                        <td>400</td>
+                                        <td>20
+                                            <span style="float: right;">
+                                                <button class="ui inverted green button buy-btn">BUY</button>
+                                                <button class="ui inverted red button sell-btn">SELL</button>
+                                                <button class="ui inverted orange button short-btn">SHORT</button>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1010</td>
+                                        <td>Ikea</td>
+                                        <td>900</td>
+                                        <td>30
+                                            <span style="float: right;">
+                                                <button class="ui inverted green button buy-btn">BUY</button>
+                                                <button class="ui inverted red button sell-btn">SELL</button>
+                                                <button class="ui inverted orange button short-btn">SHORT</button>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            NIKKEI
+                            <span style="float: right;">Currency:
+                                <i class="yen icon"></i>
+                            </span>
+                        </div>
+                        <div class="content">
+                            <table class="ui yellow table">
+                                <thead>
+                                    <tr>
+                                        <th>Scrip</th>
+                                        <th>Comapany Name</th>
+                                        <th>Current Price</th>
+                                        <th>Last Volume</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0101</td>
+                                        <td>Apple Inc.</td>
+                                        <td>400</td>
+                                        <td>20
+                                            <span style="float: right;">
+                                                <button class="ui inverted green button buy-btn">BUY</button>
+                                                <button class="ui inverted red button sell-btn">SELL</button>
+                                                <button class="ui inverted orange button short-btn">SHORT</button>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1010</td>
+                                        <td>Ikea</td>
+                                        <td>900</td>
+                                        <td>30
+                                            <span style="float: right;">
+                                                <button class="ui inverted green button buy-btn">BUY</button>
+                                                <button class="ui inverted red button sell-btn">SELL</button>
+                                                <button class="ui inverted orange button short-btn">SHORT</button>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MARKET ENDS HERE -->
+        <div class="ui divider" style="margin-top: 60px;"></div>
+
+        <!-- NSIT coin value starts here -->
+        <div class="ui two grid centered center" id="nsit-coin" style="margin-top: 30px; margin-left: 230px; margin-bottom: 60px;">
+            <h1 style="font-family: 'Raleway', sans-serif !important; font-size: 35px; font-weight: 100; letter-spacing: 0.5em;">NSIT COIN</h1>
+
+            <div class="row">
+                <div class="five wide column">
+                    <table class="ui very basic collapsing celled table" style="text-align: center; position: relative; top: 50%; transform: translate(0, -50%);">
+                        <thead>
+                            <tr>
+                                <th style="width: 150px;">Currency</th>
+                                <th style="width: 150px;">Current Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h4 class="ui image header">
+                                        <div class="content">
+                                            <div class="sub header">
+                                                <i class="icon rupee"></i>
+                                            </div>
+                                        </div>
+                                    </h4>
+                                </td>
+                                <td>
+                                    22
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="ui image header">
+                                        <div class="content">
+                                            <div class="sub header">
+                                                <i class="icon dollar"></i>
+                                            </div>
+                                        </div>
+                                    </h4>
+                                </td>
+                                <td>
+                                    15
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="ui image header">
+                                        <div class="content">
+                                            <div class="sub header">
+                                                <i class="icon pound"></i>
+                                            </div>
+                                        </div>
+                                    </h4>
+                                </td>
+                                <td>
+                                    12
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="ui image header">
+                                        <div class="content">
+                                            <div class="sub header">
+                                                <i class="icon yen"></i>
+                                            </div>
+                                        </div>
+                                    </h4>
+                                </td>
+                                <td>
+                                    11
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="six wide column" style="position: relative; top: 50%; transform: translate(0, -50%);">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="two wide column">
+                    <div class="ui buttons">
+                        <button class="ui green button nsit-buy-button">Buy</button>
+                        <div class="or"></div>
+                        <button class="ui negative button nsit-sell-button">Sell</button>
+                    </div>
+                    <div class="ui modal tiny nsit-buy">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            Buy NSIT Coin
+                        </div>
+                        <div class="image content">
+
+                            <div class="description">
+                                <table class="ui very basic collapsing celled table market-modal-table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h4 class="ui image header">
+
+                                                    <div class="content">
+                                                        <div class="sub header">Currency
+                                                        </div>
+                                                    </div>
+                                                </h4>
+                                            </td>
+                                            <td>
+                                                <div class="two fields">
+                                                    <div class="field">
+                                                        <select class="ui fluid dropdown">
+                                                            <option class="opt" value="">Rupee</option>
+                                                            <option class="opt" value="AL">Rupee</option>
+                                                            <option class="opt" value="AK">Dollar</option>
+                                                            <option class="opt" value="AZ">Pound</option>
+                                                            <option class="opt" value="AR">Yen</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4 class="ui image header">
+
+                                                    <div class="content">
+                                                        <div class="sub header">Current Price
+                                                        </div>
+                                                    </div>
+                                                </h4>
+                                            </td>
+                                            <td class="model-table-adjustment">
+                                                <i class="icon rupee icon-12"></i>101010
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4 class="ui image header">
+
+                                                    <div class="content">
+                                                        <div class="sub header">Amount
+                                                        </div>
+                                                    </div>
+                                                </h4>
+                                            </td>
+                                            <td>
+                                                <div class="ui input focus">
+                                                    <input type="text" placeholder="Enter Amount">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4 class="ui image header">
+
+                                                    <div class="content">
+                                                        <div class="sub header">Quantity
+                                                        </div>
+                                                    </div>
+                                                </h4>
+                                            </td>
+                                            <td>
+                                                <i class="icon rupee icon-12"></i>101010
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="ui buttons">
+                                <button class="ui button deny red">Cancel</button>
+                                <div class="or"></div>
+                                <button class="ui positive button">Buy</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui modal tiny nsit-sell">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            Sell NSIT Coin
+                        </div>
+                        <div class="image content">
+                            <div class="description">
+                                <table class="ui very basic collapsing celled table market-modal-table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h4 class="ui image header">
+
+                                                    <div class="content">
+                                                        <div class="sub header">Currency
+                                                        </div>
+                                                    </div>
+                                                </h4>
+                                            </td>
+                                            <td>
+                                                <div class="two fields">
+                                                    <div class="field">
+                                                        <select class="ui fluid dropdown">
+                                                            <option value="">Rupee</option>
+                                                            <option value="AL">Rupee</option>
+                                                            <option value="AK">Dollar</option>
+                                                            <option value="AZ">Pound</option>
+                                                            <option value="AR">Yen</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4 class="ui image header">
+
+                                                    <div class="content">
+                                                        <div class="sub header">Current Price
+                                                        </div>
+                                                    </div>
+                                                </h4>
+                                            </td>
+                                            <td class="model-table-adjustment">
+                                                <i class="icon rupee icon-13"></i>101010
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4 class="ui image header">
+
+                                                    <div class="content">
+                                                        <div class="sub header">Amount
+                                                        </div>
+                                                    </div>
+                                                </h4>
+                                            </td>
+                                            <td>
+                                                <div class="ui input focus">
+                                                    <input type="text" placeholder="Enter Amount">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4 class="ui image header">
+
+                                                    <div class="content">
+                                                        <div class="sub header">Quantity
+                                                        </div>
+                                                    </div>
+                                                </h4>
+                                            </td>
+                                            <td>
+                                                <i class="icon rupee icon-13"></i>101010
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="ui buttons">
+                                <button class="ui button deny red">Cancel</button>
+                                <div class="or"></div>
+                                <button class="ui positive button">Sell</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- NSIT coin value ends here -->
+        <div class="ui divider" style="margin-top: 60px;"></div>
+        <!-- FOREIGN EXCHANGE STARTS HERE -->
+        <div class="ui two grid centered center" id="foreign-exchange" style="margin-top: 30px; margin-left: 230px; margin-bottom: 60px;">
+            <h1 style="font-family: 'Raleway', sans-serif !important; font-size: 35px; font-weight: 100; letter-spacing: 0.5em;">FOREIGN EXCHANGE</h1>
+            <div class="row">
+                <h3 style="font-family: 'Raleway', sans-serif !important; position: relative; top: 50%; transform: translate(0, -50%);">To
+                    <i class="long arrow right icon"></i>
+                </h3>
+            </div>
+            <div class="row">
+                <div class="two wide column" style="text-align: right;">
+                    <h3 style="font-family: 'Raleway', sans-serif !important; position: relative; top: 50%; transform: translate(0, -50%);">From
+                        <i class="long arrow down icon"></i>
+                    </h3>
+                </div>
+                <div class="ten wide column">
+                    <table class="ui definition celled table" style="text-align: center;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>
+                                    <i class="icon rupee"></i>
+                                </th>
+                                <th>
+                                    <i class="icon dollar"></i>
+                                </th>
+                                <th>
+                                    <i class="icon pound"></i>
+                                </th>
+                                <th>
+                                    <i class="icon yen"></i>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <i class="icon rupee"></i>
+                                </td>
+                                <td data-tooltip="From Rupee to Rupee" data-inverted="">1</td>
+                                <td data-tooltip="From Rupee to Dollar" data-inverted="">101010</td>
+                                <td data-tooltip="From Rupee to Pound" data-inverted="">101010</td>
+                                <td data-tooltip="From Rupee to Yen" data-inverted="">101010</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="icon dollar"></i>
+                                </td>
+                                <td data-tooltip="From Dollar to Rupee" data-inverted="">101010</td>
+                                <td data-tooltip="From Dollar to Dollar" data-inverted="">1</td>
+                                <td data-tooltip="From Dollar to Pound" data-inverted="">101010</td>
+                                <td data-tooltip="From Dollar to Yen" data-inverted="">101010</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="icon pound"></i>
+                                </td>
+                                <td data-tooltip="From Pound to Rupee" data-inverted="">101010</td>
+                                <td data-tooltip="From Pound to Dollar" data-inverted="">101010</td>
+                                <td data-tooltip="From Pound to Pound" data-inverted="">1</td>
+                                <td data-tooltip="From Pound to Yen" data-inverted="">101010</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="icon yen"></i>
+                                </td>
+                                <td data-tooltip="From Yen to Rupee" data-inverted="">101010</td>
+                                <td data-tooltip="From Yen to Dollar" data-inverted="">101010</td>
+                                <td data-tooltip="From Yen to Pound" data-inverted="">101010</td>
+                                <td data-tooltip="From Yen to Yen" data-inverted="">1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 30px;">
+                <div class="four wide column">
+                    <div class="two fields">
+                        <div class="field">
+                            <label style="font-weight: 600;">From</label>
+                            <select class="ui fluid dropdown">
+                                <option value="">Rupee</option>
+                                <option value="AL">Rupee</option>
+                                <option value="AK">Dollar</option>
+                                <option value="AZ">Pound</option>
+                                <option value="AR">Yen</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="four wide column">
+                    <div class="two fields">
+                        <div class="field">
+                            <label style="font-weight: 600;">To</label>
+                            <select class="ui fluid dropdown">
+                                <option value="">Rupee</option>
+                                <option value="AL">Rupee</option>
+                                <option value="AK">Dollar</option>
+                                <option value="AZ">Pound</option>
+                                <option value="AR">Yen</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="six wide column">
+                    <div class="ui form">
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Enter Amount</label>
+                                <input type="text" placeholder="Enter Amount">
+                            </div>
+                            <div class="field">
+                                <label>Converted Amount</label>
+                                <input type="text" value="0" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="two wide column" >
+                    <button class="ui inverted green button" style="position: relative; top: 50%; transform: translate(0%, -37%)">Execute</button>
+                </div>
+            </div>
+            <!-- FOREIGN EXCHANGE ENDS HERE -->
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script>
+
+        $('select.dropdown')
+            .dropdown()
+            ;
+
+        $('.visible.example .ui.sidebar')
+            .sidebar({
+                context: '.visible.example .bottom.segment'
+            })
+            .sidebar('hide')
+            ;
+
+        $('.special.cards .image').dimmer({
+            on: 'hover'
+        });
+
+        $('.ui.accordion')
+            .accordion()
+            ;
+
+        $(".buy-btn").on('click', function () {
+            $('.ui.modal.buy')
+                .modal('show')
+                ;
+        });
+
+        $(".sell-btn").on('click', function () {
+            $('.ui.modal.sell')
+                .modal('show')
+                ;
+        });
+
+        $(".short-btn").on('click', function () {
+            $('.ui.modal.short')
+                .modal('show')
+                ;
+        });
+
+        $(".more-info-nse").on('click', function () {
+            $('.ui.info.modal.small.nse')
+                .modal('show')
+                ;
+        });
+
+        $(".more-info-nasdaq").on('click', function () {
+            $('.ui.info.modal.small.nasdaq')
+                .modal('show')
+                ;
+        });
+
+        $(".more-info-lse").on('click', function () {
+            $('.ui.info.modal.small.lse')
+                .modal('show')
+                ;
+        });
+
+        $(".more-info-nikkie").on('click', function () {
+            $('.ui.info.modal.small.nikkie')
+                .modal('show')
+                ;
+        });
+
+        $(".nsit-buy-button").on('click', function () {
+            $('.ui.modal.tiny.nsit-buy')
+                .modal('show')
+                ;
+        });
+
+        $(".nsit-sell-button").on('click', function () {
+            $('.ui.modal.tiny.nsit-sell')
+                .modal('show')
+                ;
+        });
+    </script>
+    <script>
+        let myChart = document.getElementById('myChart').getContext('2d');
+
+        // Global Options
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+
+        let massPopChart = new Chart(myChart, {
+            type: 'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            data: {
+                labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+                datasets: [{
+                    label: 'Population',
+                    data: [
+                        617594,
+                        181045,
+                        153060,
+                        106519,
+                        105162,
+                        95072
+                    ],
+                    //backgroundColor:'green',
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Largest Cities In Massachusetts',
+                    fontSize: 25
+                },
+                legend: {
+                    display: true,
+                    position: 'right',
+                    labels: {
+                        fontColor: '#000'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $('a[href*="#"]')
+            // Remove links that don't actually link to anything
+            .not('[href="#"]')
+            .not('[href="#0"]')
+            .click(function (event) {
+                // On-page links
+                if (
+                    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+                    location.hostname == this.hostname
+                ) {
+                    // Figure out element to scroll to
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    // Does a scroll target exist?
+                    if (target.length) {
+                        // Only prevent default if animation is actually gonna happen
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top
+                        }, 500, function () {
+                            // Callback after animation
+                            // Must change focus!
+                            var $target = $(target);
+                            $target.focus();
+                            if ($target.is(":focus")) { // Checking if the target was focused
+                                return false;
+                            } else {
+                                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                                $target.focus(); // Set focus again
+                            };
+                        });
+                    }
+                }
+            });
+    </script>
+    <script src="main.js">
+    </script>
+
+</body>
+
+</html>
