@@ -26,7 +26,7 @@
             </a>
             <a class="item">
                 <img style="margin: 10px auto;" class="ui tiny circular image" src="matthew.png">
-                <h3>Team Name</h3>
+                <h3><%= current_user.nameteam %></h3>
             </a>
             <a class="item" href="#portfolio">
                 <i class="block layout icon"></i>
@@ -672,17 +672,19 @@
                             <table class="ui blue table">
                                 <thead>
                                     <tr>
-                                        <th>Scrip</th>
+                                        <th>S.No.</th>
                                         <th>Comapany Name</th>
                                         <th>Current Price</th>
                                         <th>Last Volume</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <% i = 1 %>
+                                <% @m1_stocks.each do |m1_stock| %>
                                     <tr>
-                                        <td>0101</td>
-                                        <td>Apple Inc.</td>
-                                        <td>400</td>
+                                        <td><%= i %></td> <% i = i+1 %>
+                                        <td> <%= m1_stock.name %> </td>
+                                        <td><%= m1_stock.price %></td>
                                         <td>20
                                             <span style="float: right;">
                                                 <button class="ui inverted green button buy-btn">BUY</button>
@@ -700,7 +702,7 @@
                                                                 <div class="ui breadcrumb market-modal">
                                                                     <a class="section">National Stock Exchange</a>
                                                                     <i class="right angle icon divider"></i>
-                                                                    <a class="section">Apple Inc.</a>
+                                                                    <a class="section"><%= m1_stock.name %></a>
                                                                 </div>
                                                             </div>
                                                             <table class="ui very basic collapsing celled table market-modal-table">
@@ -716,7 +718,8 @@
                                                                             </h4>
                                                                         </td>
                                                                         <td class="model-table-adjustment">
-                                                                            <i class="icon rupee"></i>101010
+                                                                            <i class="icon rupee"></i>
+                                                                            <%= m1_stock.price %>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -744,8 +747,12 @@
                                                                             </h4>
                                                                         </td>
                                                                         <td>
+                                                                            <%= form_tag '/portal/buy_stock' do %>
                                                                             <div class="ui input focus">
-                                                                                <input type="text" placeholder="Enter Quantity">
+                                                                                <!--input type="text" placeholder="Enter Quantity"-->
+                                                                                
+                                                                                <%= text_field_tag :num %>
+                                                                                <%= hidden_field_tag :stock_id , m1_stock.id %>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -771,7 +778,9 @@
                                                         <div class="ui buttons">
                                                             <button class="ui button deny red">Cancel</button>
                                                             <div class="or"></div>
-                                                            <button class="ui positive button">Buy</button>
+                                                            <!--button class="ui positive button">Buy</button-->
+                                                            <%= submit_tag "Buy", :class=>"ui positive button" %>
+                                                            <% end %>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -952,7 +961,7 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <!--tr>
                                         <td>1010</td>
                                         <td>Ikea</td>
                                         <td>900</td>
@@ -963,7 +972,8 @@
                                                 <button class="ui inverted orange button short-btn">SHORT</button>
                                             </span>
                                         </td>
-                                    </tr>
+                                    </tr-->
+                                    <% end %>
                                 </tbody>
                             </table>
                         </div>

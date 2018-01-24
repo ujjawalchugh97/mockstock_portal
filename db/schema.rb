@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122075604) do
+ActiveRecord::Schema.define(version: 20180124191630) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20180122075604) do
     t.integer "user_id"
     t.integer "stock_id"
     t.integer "no_of_shares"
-    t.decimal "price_bought_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "investment"
     t.index ["stock_id"], name: "index_user_stock_mappings_on_stock_id"
     t.index ["user_id"], name: "index_user_stock_mappings_on_user_id"
   end
@@ -78,8 +78,18 @@ ActiveRecord::Schema.define(version: 20180122075604) do
     t.string "namep2"
     t.string "contactp1", default: "", null: false
     t.string "contactp2"
-    t.decimal "balance", default: "500000.0"
-    t.string "contracts", default: "", null: false
+    t.decimal "balance1", default: "500000.0"
+    t.decimal "balance2", default: "500000.0"
+    t.decimal "balance3", default: "500000.0"
+    t.decimal "balance4", default: "500000.0"
+    t.decimal "balance_nc1", default: "0.0"
+    t.decimal "balance_nc2", default: "0.0"
+    t.decimal "balance_nc3", default: "0.0"
+    t.decimal "balance_nc4", default: "0.0"
+    t.decimal "investment_nc1", default: "0.0"
+    t.decimal "investment_nc2", default: "0.0"
+    t.decimal "investment_nc3", default: "0.0"
+    t.decimal "investment_nc4", default: "0.0"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
