@@ -1,0 +1,37 @@
+<%= form_with(model: sfuture, local: true) do |form| %>
+  <% if sfuture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sfuture.errors.count, "error") %> prohibited this sfuture from being saved:</h2>
+
+      <ul>
+      <% sfuture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :stock_id %>
+    <%= form.text_field :stock_id, id: :sfuture_stock_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.text_field :time, id: :sfuture_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :selling_price %>
+    <%= form.text_field :selling_price, id: :sfuture_selling_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price_per_share %>
+    <%= form.text_field :price_per_share, id: :sfuture_price_per_share %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

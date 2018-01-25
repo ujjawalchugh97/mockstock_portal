@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125012337) do
+ActiveRecord::Schema.define(version: 20180125043953) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20180125012337) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sfutures", force: :cascade do |t|
+    t.integer "stock_id"
+    t.string "time"
+    t.decimal "selling_price"
+    t.decimal "price_per_share"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stock_id"], name: "index_sfutures_on_stock_id"
+  end
+
   create_table "stocks", force: :cascade do |t|
     t.string "name"
     t.integer "qty_in_market"
@@ -43,6 +53,16 @@ ActiveRecord::Schema.define(version: 20180125012337) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["market_id"], name: "index_stocks_on_market_id"
+  end
+
+  create_table "user_sfuture_mappings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sfuture_id"
+    t.integer "no_of_shares"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sfuture_id"], name: "index_user_sfuture_mappings_on_sfuture_id"
+    t.index ["user_id"], name: "index_user_sfuture_mappings_on_user_id"
   end
 
   create_table "user_short_mappings", force: :cascade do |t|
