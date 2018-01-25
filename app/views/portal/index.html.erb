@@ -796,7 +796,7 @@
                                                                 <div class="ui breadcrumb market-modal">
                                                                     <a class="section">National Stock Exchange</a>
                                                                     <i class="right angle icon divider"></i>
-                                                                    <a class="section">Apple Inc.</a>
+                                                                    <a class="section"><%= m1_stock.name %></a>
                                                                 </div>
                                                             </div>
                                                             <table class="ui very basic collapsing celled table market-modal-table">
@@ -812,7 +812,7 @@
                                                                             </h4>
                                                                         </td>
                                                                         <td class="model-table-adjustment">
-                                                                            <i class="icon rupee"></i>101010
+                                                                            <i class="icon rupee"></i><%= m1_stock.price %>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -840,8 +840,12 @@
                                                                             </h4>
                                                                         </td>
                                                                         <td>
+                                                                           <%= form_tag '/portal/sell_stock' do %>
                                                                             <div class="ui input focus">
-                                                                                <input type="text" placeholder="Enter Quantity">
+                                                                                <!--input type="text" placeholder="Enter Quantity"-->
+                                                                                
+                                                                                <%= text_field_tag :num %>
+                                                                                <%= hidden_field_tag :stock_id , m1_stock.id %>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -867,7 +871,9 @@
                                                         <div class="ui buttons">
                                                             <button class="ui button deny red">Cancel</button>
                                                             <div class="or"></div>
-                                                            <button class="ui positive button">Sell</button>
+                                                            <!--button class="ui positive button">Sell</button-->
+                                                            <%= submit_tag "Sell", :class=>"ui positive button" %>
+                                                            <% end %>
                                                         </div>
                                                     </div>
                                                 </div>

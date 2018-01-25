@@ -40,4 +40,37 @@ class PortalController < ApplicationController
 
   	return redirect_to '/portal/index'
   end
+
+  def sell_stock
+  	stock_id = params[:stock_id]
+  	num = params[:num].to_i
+  	stock = Stock.where(:id => stock_id).first
+  	amt = stock.price*num
+
+  	stock_mapping = UserStockMapping.where(:user_id => current_user.id, :stock_id => stock_id).first
+    unless stock_mapping  
+    	raise Error.new "You don't own the stock"
+    else
+      stock_mapping.no_of_shares = stock_mapping.no_of_shares - num
+      stock_mapping.investment = stock_mapping.investment - amt
+      stock_mapping.save
+    end
+  	
+  	if stock.market_id == 1
+    	current_user.balance1 = current_user.balance1 + amt
+    elsif stock.market_id == 2
+    	current_user.balance2 = current_user.balance2 + amt
+    elsif stock.market_id == 3
+    	current_user.balance3 = current_user.balance3 + amt
+    elsif stock.market_id == 4
+    	current_user.balance4 = current_user.balance4 + amt
+    end
+
+    stock.price = stock.price - 10 #TODO
+    stock.qty_in_market = stock.qty_in_market - num
+    current_user.save
+    stock.save
+    
+  	return redirect_to '/portal/index'
+  end
 end
