@@ -11,6 +11,9 @@ class PortalController < ApplicationController
   def buy_stock
   	stock_id = params[:stock_id]
   	num = params[:num].to_i
+  	if num < 0
+  		raise Error.new "Cannot Have negative no of shares"
+  	end
   	stock = Stock.where(:id => stock_id).first
   	investment = stock.price*num
   	
@@ -47,6 +50,10 @@ class PortalController < ApplicationController
   	stock = Stock.where(:id => stock_id).first
   	amt = stock.price*num
 
+  	if num < 0
+  		raise Error.new "Cannot Have negative no of shares"
+  	end
+  	
   	stock_mapping = UserStockMapping.where(:user_id => current_user.id, :stock_id => stock_id).first
     unless stock_mapping  
     	raise Error.new "You don't own the stock"
