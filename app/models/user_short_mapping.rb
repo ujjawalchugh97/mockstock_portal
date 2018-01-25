@@ -1,7 +1,6 @@
 class UserShortMapping < ApplicationRecord
   belongs_to :user
   belongs_to :stock
-
   before_save :check_no_of_shares
 
   private

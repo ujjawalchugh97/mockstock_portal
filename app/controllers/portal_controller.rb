@@ -34,7 +34,7 @@ class PortalController < ApplicationController
     
     stock_mapping = UserStockMapping.where(:user_id => current_user.id, :stock_id => stock_id).first
     unless stock_mapping  
-      UserStockMapping.create(:user_id => current_user.id, stock_id: stock_id, no_of_shares: params[:num], investment: investment)
+      UserStockMapping.create(:user_id => current_user.id, stock_id: stock_id, no_of_shares: num, investment: investment)
     else
       stock_mapping.no_of_shares = stock_mapping.no_of_shares + num
       stock_mapping.investment = stock_mapping.investment + investment
@@ -53,7 +53,7 @@ class PortalController < ApplicationController
   	if num < 0
   		raise Error.new "Cannot Have negative no of shares"
   	end
-  	
+
   	stock_mapping = UserStockMapping.where(:user_id => current_user.id, :stock_id => stock_id).first
     unless stock_mapping  
     	raise Error.new "You don't own the stock"
@@ -61,6 +61,9 @@ class PortalController < ApplicationController
       stock_mapping.no_of_shares = stock_mapping.no_of_shares - num
       stock_mapping.investment = stock_mapping.investment - amt
       stock_mapping.save
+      if stock_mapping.no_of_shares == 0
+      	stock_mapping.destroy
+      end
     end
   	
   	if stock.market_id == 1
@@ -77,6 +80,44 @@ class PortalController < ApplicationController
     stock.qty_in_market = stock.qty_in_market - num
     current_user.save
     stock.save
+    
+  	return redirect_to '/portal/index'
+  end
+
+
+  def short_stock
+  	stock_id = params[:stock_id]
+  	num = params[:num].to_i
+  	stock = Stock.where(:id => stock_id).first
+  	amt = stock.price*num
+
+  	if num < 0
+  		raise Error.new "Cannot Have negative no of shares"
+  	end
+  	
+  	short_mapping = UserShortMapping.where(:user_id => current_user.id, :stock_id => stock_id).first
+    unless short_mapping  
+    	UserShortMapping.create(:user_id => current_user.id, stock_id: stock_id, no_of_shares: num, amt: amt)
+    else
+      short_mapping.no_of_shares = stock_mapping.no_of_shares + num
+      short_mapping.amt = stock_mapping.amt + amt
+      short_mapping.save
+    end
+  	
+  	#if stock.market_id == 1
+    #	current_user.balance1 = current_user.balance1 + amt
+    #elsif stock.market_id == 2
+    #	current_user.balance2 = current_user.balance2 + amt
+    #elsif stock.market_id == 3
+    #	current_user.balance3 = current_user.balance3 + amt
+    #elsif stock.market_id == 4
+    #	current_user.balance4 = current_user.balance4 + amt
+    #end
+
+    #stock.price = stock.price - 10 #TODO
+    #stock.qty_in_market = stock.qty_in_market - num
+    #current_user.save
+    #stock.save
     
   	return redirect_to '/portal/index'
   end

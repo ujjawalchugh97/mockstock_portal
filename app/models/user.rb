@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :user_stock_mappings
   has_many :stocks, :through => :user_stock_mappings
+  has_many :user_short_mappings
   before_save :check_user_balance
 
   
