@@ -6,6 +6,7 @@ class PortalController < ApplicationController
   	@m2_stocks = Stock.m_stocks(2)
   	@m3_stocks = Stock.m_stocks(3)
   	@m4_stocks = Stock.m_stocks(4)
+  	@sfutures = Sfuture.all
   end
   
   def buy_stock
@@ -102,6 +103,41 @@ class PortalController < ApplicationController
       short_mapping.no_of_shares = stock_mapping.no_of_shares + num
       short_mapping.amt = stock_mapping.amt + amt
       short_mapping.save
+    end
+  	
+  	#if stock.market_id == 1
+    #	current_user.balance1 = current_user.balance1 + amt
+    #elsif stock.market_id == 2
+    #	current_user.balance2 = current_user.balance2 + amt
+    #elsif stock.market_id == 3
+    #	current_user.balance3 = current_user.balance3 + amt
+    #elsif stock.market_id == 4
+    #	current_user.balance4 = current_user.balance4 + amt
+    #end
+
+    #stock.price = stock.price - 10 #TODO
+    #stock.qty_in_market = stock.qty_in_market - num
+    #current_user.save
+    #stock.save
+    
+  	return redirect_to '/portal/index'
+  end
+
+  def buy_sfuture
+  	future_id = params[:future_id]
+  	num = params[:num].to_i
+  	future = Sfuture.where(:id => future_id).first
+
+  	if num < 0
+  		raise Error.new "Cannot Have negative no of shares"
+  	end
+  	
+  	future_mapping = UserSfutureMapping.where(:user_id => current_user.id, :sfuture_id => future_id).first
+    unless future_mapping  
+    	UserSfutureMapping.create(:user_id => current_user.id, sfuture_id: future_id, no_of_shares: num)
+    else
+      future_mapping.no_of_shares = future_mapping.no_of_shares + num
+      future_mapping.save
     end
   	
   	#if stock.market_id == 1

@@ -1133,6 +1133,42 @@
         <div class="ui two grid centered center" id="nsit-coin" style="margin-top: 30px; margin-left: 230px; margin-bottom: 60px;">
         <h1 style="font-family: 'Raleway', sans-serif !important; font-size: 35px; font-weight: 100; letter-spacing: 0.5em;">FUTURES</h1>
 
+        <table class="ui blue table">
+                                <thead>
+                                    <tr>
+                                        <th>S.No.</th>
+                                        <th>Company Name</th>
+                                        <th>Time</th>
+                                        <th>Selling Price</th>
+                                        <th>No of shares</th>
+                                        <th colspan="2"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                <% @sfutures.each do |future| %>
+                                <% j = 1 %>
+                                    <tr>
+                                        <td><%= j %></td> <% j = j+1 %>
+                                        <td> <%= future.stock.name %> </td>
+                                        <td> <%= future.time %> </td>
+                                        <td><%= future.selling_price %></td>
+                                        <td>
+                                            <%= form_tag '/portal/buy_sfuture' do %>
+                                            <div class="ui input focus">
+                                                <%= text_field_tag :num %>
+                                                <%= hidden_field_tag :future_id , future.id %>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <%= submit_tag "Buy", :class=>"ui positive button" %>
+                                            <% end %>
+                                        </td>
+                                    </tr>
+                                    <% end %>
+                                </tbody>
+        </table>
+
         </div>
 
         <div class="ui divider" style="margin-top: 60px;"></div>

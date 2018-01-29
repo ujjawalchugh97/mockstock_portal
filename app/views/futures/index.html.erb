@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Futures</h1>
+<h2>Selling Futures</h2>
+<table>
+  <thead>
+    <tr>
+      <th>User_Team_Name</th>
+      <th>User_Participant1_Name</th>
+      <th>Selling_Future_Stock_Name</th>
+      <th>Selling_Future_Selling_Price</th>
+      <th>No_Of_Shares</th>
+      <th>Created_At</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sfutures.each do |future| %>
+      <tr>
+        <td><%= future.user.nameteam %></td>
+        <td><%= future.user.namep1 %></td>
+        <td><%= future.sfuture.stock.name %></td>
+        <td><%= future.sfuture.selling_price %></td>
+        <td><%= future.no_of_shares %></td>
+        <td><%= future.created_at.in_time_zone("New Delhi") %> </td>
+        <td><%= link_to "Execute", url_for(controller: :futures, action: :execute_s, sfuture_id: future.id), method: :post%> <!--, class: 'tweet_like_link' , id: "tweet_#{tweet.id}"--></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

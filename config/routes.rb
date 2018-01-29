@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'futures/index'
+
   resources :sfutures
   get 'shorts/index'
 
@@ -14,5 +16,8 @@ Rails.application.routes.draw do
   post '/portal/buy_stock' => 'portal#buy_stock'
   post '/portal/sell_stock' => 'portal#sell_stock'
   post '/portal/short_stock' => 'portal#short_stock'
+  post '/portal/buy_sfuture' => 'portal#buy_sfuture'
   post '/shorts/execute' => 'shorts#execute'
+  post '/futures/execute_s' => 'futures#execute_s'
+  
 end
