@@ -7,6 +7,7 @@ class PortalController < ApplicationController
   	@m3_stocks = Stock.m_stocks(3)
   	@m4_stocks = Stock.m_stocks(4)
   	@sfutures = Sfuture.all
+    @user_m1_stocks = current_user.m1_stock_holdings
   end
   
   def buy_stock

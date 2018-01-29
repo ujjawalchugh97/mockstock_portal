@@ -23,7 +23,7 @@
         <td><%= short.stock.name %></td>
         <td><%= short.no_of_shares %></td>
         <td><%= short.amt %></td>
-        <td><%= short.created_at %> </td>
+        <td><%= short.created_at.in_time_zone("New Delhi") %> </td>
         <td><%= link_to "Execute", url_for(controller: :shorts, action: :execute, short_id: short.id), method: :post%> <!--, class: 'tweet_like_link' , id: "tweet_#{tweet.id}"--></td>
       </tr>
     <% end %>

@@ -10,8 +10,8 @@ class User < ApplicationRecord
 
   
 
-  def stock_holdings
-  	stocks = UserStockMapping.includes(:stocks, :users).where("user_id in (?)", self.id)
+  def m1_stock_holdings
+  	stocks = UserStockMapping.includes(:stock, :user).where("user_id in (?) AND stock_id in (?)", [self.id], [1,2,3,4])
     stocks.order(:stock_id)
   end
 

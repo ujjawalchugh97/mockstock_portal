@@ -140,26 +140,28 @@
                                                         <th>Stock Name</th>
                                                         <th>Investment</th>
                                                         <th>Current Value</th>
-                                                        <th>Volume</th>
+                                                        <th>No. Of Shares</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                <% @user_m1_stocks.each do |mapping| %>
                                                     <tr>
                                                         <td>
                                                             <h4 class="ui header">
                                                                 <div class="content">
-                                                                    <div class="sub header">A
+                                                                    <div class="sub header"><%= mapping.stock.name %>
                                                                     </div>
                                                                 </div>
                                                             </h4>
                                                         </td>
                                                         <td>
-                                                            22
+                                                            <%= mapping.investment %>
                                                         </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
+                                                        <td><%= mapping.stock.price*mapping.no_of_shares %></td>
+                                                        <td><%= mapping.no_of_shares %></td>
                                                     </tr>
-                                                    <tr>
+                                                    <% end %>
+                                                    <!--tr>
                                                         <td>
                                                             <h4 class="ui header">
                                                                 <div class="content">
@@ -203,7 +205,7 @@
                                                         </td>
                                                         <td>22</td>
                                                         <td>22</td>
-                                                    </tr>
+                                                    </tr-->
                                                 </tbody>
                                             </table>
                                             <div class="actions">
@@ -223,11 +225,15 @@
                         <div class="content">
                             <div class="cur-value">
                                 <span class="date" style="font-size: 16px;">Current Value:
-                                    <i class="rupee icon"></i>101010</span>
+                                <% cur_val1 = 0 %>
+                                <% @user_m1_stocks.each do |mapping| %>
+                                <% cur_val1 += mapping.stock.price*mapping.no_of_shares %>
+                                <% end %>
+                                    <i class="rupee icon"></i><%= cur_val1 %></span>
                             </div>
                             <div class="cur-value">
-                                <span class="date" style="font-size: 16px;">Cash:
-                                    <i class="rupee icon"></i>101010</span>
+                                <span class="date" style="font-size: 16px;">Balance :
+                                    <i class="rupee icon"></i><%= current_user.balance1 %></span>
                             </div>
                         </div>
                         <div class="extra content">
@@ -679,8 +685,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <% i = 1 %>
+                                
                                 <% @m1_stocks.each do |m1_stock| %>
+                                <% i = 1 %>
                                     <tr>
                                         <td><%= i %></td> <% i = i+1 %>
                                         <td> <%= m1_stock.name %> </td>
