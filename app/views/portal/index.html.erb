@@ -600,7 +600,7 @@
                 </div>
                 <div class="ten wide column cur-holding">
                     <h1 style="margin-top:20px; margin-bottom: 50px; text-align: center; font-family: 'Raleway', sans-serif !important; letter-spacing: 0.1em; font-weight: 100;">NSIT Coin Holding:
-                        <em>101010</em>
+                        <em><%= current_user.balance_nc1%></em>
                     </h1>
                     <div class="ui four grid centered">
                         <div class="three wide column nsit-coin-value" style="text-align: center;">
@@ -608,11 +608,11 @@
                                 <i class="rupee icon"></i>
                             </h1>
                             <span class="date" style="font-size: 13px;">Cur. Value:
-                                <i class="rupee icon"></i>101010</span>
+                                <i class="rupee icon"></i><%= @r51*current_user.balance_nc1 %></span>
                             <br>
                             <br>
                             <span class="date" style="font-size: 13px;">Investment:
-                                <i class="rupee icon"></i>101010</span>
+                                <i class="rupee icon"></i><%= current_user.investment_nc1 %></span>
 
                         </div>
                         <div class="three wide column nsit-coin-value" style="text-align: center;">
@@ -624,7 +624,7 @@
                             <br>
                             <br>
                             <span class="date" style="font-size: 13px;">Investment:
-                                <i class="dollar icon"></i>101010</span>
+                                <i class="dollar icon"></i><%= current_user.investment_nc2 %></span>
 
                         </div>
                         <div class="three wide column nsit-coin-value" style="text-align: center;">
@@ -636,7 +636,7 @@
                             <br>
                             <br>
                             <span class="date" style="font-size: 13px;">Investment:
-                                <i class="pound icon"></i>101010</span>
+                                <i class="pound icon"></i><%= current_user.investment_nc3 %></span>
 
                         </div>
                         <div class="three wide column nsit-coin-value" style="text-align: center;">
@@ -648,7 +648,7 @@
                             <br>
                             <br>
                             <span class="date" style="font-size: 13px;">Investment:
-                                <i class="yen icon"></i>101010</span>
+                                <i class="yen icon"></i><%= current_user.investment_nc4 %></span>
 
                         </div>
 
@@ -685,9 +685,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                
-                                <% @m1_stocks.each do |m1_stock| %>
                                 <% i = 1 %>
+                                <% @m1_stocks.each do |m1_stock| %>
+                                
                                     <tr>
                                         <td><%= i %></td> <% i = i+1 %>
                                         <td> <%= m1_stock.name %> </td>
@@ -1205,7 +1205,7 @@
                                     </h4>
                                 </td>
                                 <td>
-                                    22
+                                    <%= @r51 %>
                                 </td>
                             </tr>
                             <tr>
@@ -1487,9 +1487,9 @@
                                     <i class="icon rupee"></i>
                                 </td>
                                 <td data-tooltip="From Rupee to Rupee" data-inverted="">1</td>
-                                <td data-tooltip="From Rupee to Dollar" data-inverted="">101010</td>
-                                <td data-tooltip="From Rupee to Pound" data-inverted="">101010</td>
-                                <td data-tooltip="From Rupee to Yen" data-inverted="">101010</td>
+                                <td data-tooltip="From Rupee to Dollar" data-inverted=""><%= @r12 %></td>
+                                <td data-tooltip="From Rupee to Pound" data-inverted=""><%= @r13 %></td>
+                                <td data-tooltip="From Rupee to Yen" data-inverted=""><%= @r14 %></td>
                             </tr>
                             <tr>
                                 <td>
@@ -1527,13 +1527,14 @@
                 <div class="four wide column">
                     <div class="two fields">
                         <div class="field">
+                        <%= form_tag '/portal/ex' do %>
                             <label style="font-weight: 600;">From</label>
-                            <select class="ui fluid dropdown">
+                            <select class="ui fluid dropdown" name = "ex_from" id = "ex_from">
                                 <option value="">Rupee</option>
-                                <option value="AL">Rupee</option>
-                                <option value="AK">Dollar</option>
-                                <option value="AZ">Pound</option>
-                                <option value="AR">Yen</option>
+                                <option value="1">Rupee</option>
+                                <option value="2">Dollar</option>
+                                <option value="3">Pound</option>
+                                <option value="4">Yen</option>
                             </select>
                         </div>
                     </div>
@@ -1542,12 +1543,12 @@
                     <div class="two fields">
                         <div class="field">
                             <label style="font-weight: 600;">To</label>
-                            <select class="ui fluid dropdown">
+                            <select class="ui fluid dropdown" name = "ex_to" id = "ex_to">
                                 <option value="">Rupee</option>
-                                <option value="AL">Rupee</option>
-                                <option value="AK">Dollar</option>
-                                <option value="AZ">Pound</option>
-                                <option value="AR">Yen</option>
+                                <option value="1">Rupee</option>
+                                <option value="2">Dollar</option>
+                                <option value="3">Pound</option>
+                                <option value="4">Yen</option>
                             </select>
                         </div>
                     </div>
@@ -1569,7 +1570,9 @@
                     </div>
                 </div>
                 <div class="two wide column" >
-                    <button class="ui inverted green button" style="position: relative; top: 50%; transform: translate(0%, -37%)">Execute</button>
+                    <!--button class="ui inverted green button" style="position: relative; top: 50%; transform: translate(0%, -37%)">Execute</button-->
+                    <%= submit_tag "Buy", :class=>"ui inverted green button",  :style => "position: relative; top: 50%; transform: translate(0%, -37%)" %>
+                    <% end %>
                 </div>
             </div>
             <!-- FOREIGN EXCHANGE ENDS HERE -->

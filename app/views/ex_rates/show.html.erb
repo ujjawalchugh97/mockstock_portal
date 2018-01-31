@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>M1:</strong>
+  <%= @ex_rate.m1 %>
+</p>
+
+<p>
+  <strong>M2:</strong>
+  <%= @ex_rate.m2 %>
+</p>
+
+<p>
+  <strong>M1c:</strong>
+  <%= @ex_rate.m1c %>
+</p>
+
+<p>
+  <strong>M2c:</strong>
+  <%= @ex_rate.m2c %>
+</p>
+
+<p>
+  <strong>Rate:</strong>
+  <%= @ex_rate.rate %>
+</p>
+
+<%= link_to 'Edit', edit_ex_rate_path(@ex_rate) %> |
+<%= link_to 'Back', ex_rates_path %>

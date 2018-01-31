@@ -2,12 +2,22 @@ class PortalController < ApplicationController
 	before_action :authenticate_user!
   
   def index
-  	@m1_stocks = Stock.m_stocks(1)
+  	@r51 = ExRate.er(5,1).first.rate
+    
+
+    @user_m1_stocks = current_user.m1_stock_holdings
+
+    @m1_stocks = Stock.m_stocks(1)
   	@m2_stocks = Stock.m_stocks(2)
   	@m3_stocks = Stock.m_stocks(3)
   	@m4_stocks = Stock.m_stocks(4)
   	@sfutures = Sfuture.all
-    @user_m1_stocks = current_user.m1_stock_holdings
+
+    @r15 = ExRate.er(1,5).first.rate 
+    
+    @r12 = ExRate.er(1,2).first.rate
+    @r13 = ExRate.er(1,3).first.rate
+    @r14 = ExRate.er(1,4).first.rate
   end
   
   def buy_stock
