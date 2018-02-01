@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129101228) do
+ActiveRecord::Schema.define(version: 20180201142722) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,6 +27,23 @@ ActiveRecord::Schema.define(version: 20180129101228) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "bfutures", force: :cascade do |t|
+    t.integer "stock_id"
+    t.string "time"
+    t.decimal "buying_price"
+    t.decimal "price_per_share"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stock_id"], name: "index_bfutures_on_stock_id"
+  end
+
+  create_table "currencies", force: :cascade do |t|
+    t.string "name"
+    t.decimal "rate", default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ex_rates", force: :cascade do |t|
@@ -63,6 +80,16 @@ ActiveRecord::Schema.define(version: 20180129101228) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["market_id"], name: "index_stocks_on_market_id"
+  end
+
+  create_table "user_bfuture_mappings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "bfuture_id"
+    t.integer "no_of_shares"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bfuture_id"], name: "index_user_bfuture_mappings_on_bfuture_id"
+    t.index ["user_id"], name: "index_user_bfuture_mappings_on_user_id"
   end
 
   create_table "user_sfuture_mappings", force: :cascade do |t|

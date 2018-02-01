@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bfutures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stock</th>
+      <th>Time</th>
+      <th>Buying price</th>
+      <th>Price per share</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bfutures.each do |bfuture| %>
+      <tr>
+        <td><%= bfuture.stock %></td>
+        <td><%= bfuture.time %></td>
+        <td><%= bfuture.buying_price %></td>
+        <td><%= bfuture.price_per_share %></td>
+        <td><%= link_to 'Show', bfuture %></td>
+        <td><%= link_to 'Edit', edit_bfuture_path(bfuture) %></td>
+        <td><%= link_to 'Destroy', bfuture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bfuture', new_bfuture_path %>

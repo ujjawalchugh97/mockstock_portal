@@ -1,0 +1,37 @@
+<%= form_with(model: bfuture, local: true) do |form| %>
+  <% if bfuture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bfuture.errors.count, "error") %> prohibited this bfuture from being saved:</h2>
+
+      <ul>
+      <% bfuture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :stock_id %>
+    <%= form.text_field :stock_id, id: :bfuture_stock_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.text_field :time, id: :bfuture_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :buying_price %>
+    <%= form.text_field :buying_price, id: :bfuture_buying_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price_per_share %>
+    <%= form.text_field :price_per_share, id: :bfuture_price_per_share %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

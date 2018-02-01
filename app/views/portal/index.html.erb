@@ -346,8 +346,8 @@
                                     <i class="dollar icon"></i>101010</span>
                             </div>
                             <div class="cur-value">
-                                <span class="date" style="font-size: 16px;">Cash:
-                                    <i class="dollar icon"></i>101010</span>
+                                <span class="date" style="font-size: 16px;">Balance:
+                                    <i class="dollar icon"></i><%= current_user.balance2 %></span>
                             </div>
                         </div>
                         <div class="extra content">
@@ -1522,20 +1522,23 @@
                     </table>
                 </div>
             </div>
-
+            
             <div class="row" style="margin-top: 30px;">
+            <%= form_tag '/portal/ex_cur' do %>
                 <div class="four wide column">
                     <div class="two fields">
                         <div class="field">
-                        <%= form_tag '/portal/ex' do %>
+                        
                             <label style="font-weight: 600;">From</label>
-                            <select class="ui fluid dropdown" name = "ex_from" id = "ex_from">
+                            <%= collection_select(:exf, :id, @currencies, :id, :name,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
+                            <!--select class="ui fluid dropdown" name = "ex_from" id = "ex_from">
+                            
                                 <option value="">Rupee</option>
                                 <option value="1">Rupee</option>
                                 <option value="2">Dollar</option>
                                 <option value="3">Pound</option>
                                 <option value="4">Yen</option>
-                            </select>
+                            </select-->
                         </div>
                     </div>
                 </div>
@@ -1543,13 +1546,14 @@
                     <div class="two fields">
                         <div class="field">
                             <label style="font-weight: 600;">To</label>
-                            <select class="ui fluid dropdown" name = "ex_to" id = "ex_to">
+                            <%= collection_select(:ext, :id, @currencies, :id, :name,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
+                            <!--select class="ui fluid dropdown" name = "ex_to" id = "ex_to">
                                 <option value="">Rupee</option>
                                 <option value="1">Rupee</option>
                                 <option value="2">Dollar</option>
                                 <option value="3">Pound</option>
                                 <option value="4">Yen</option>
-                            </select>
+                            </select-->
                         </div>
                     </div>
                 </div>
@@ -1560,7 +1564,8 @@
                         <div class="two fields">
                             <div class="field">
                                 <label>Enter Amount</label>
-                                <input type="text" placeholder="Enter Amount">
+                                <!--input type="text" placeholder="Enter Amount"-->
+                                <%= text_field_tag :amt %>
                             </div>
                             <div class="field">
                                 <label>Converted Amount</label>

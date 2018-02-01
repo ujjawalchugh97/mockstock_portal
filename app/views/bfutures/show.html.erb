@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @bfuture.stock %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @bfuture.time %>
+</p>
+
+<p>
+  <strong>Buying price:</strong>
+  <%= @bfuture.buying_price %>
+</p>
+
+<p>
+  <strong>Price per share:</strong>
+  <%= @bfuture.price_per_share %>
+</p>
+
+<%= link_to 'Edit', edit_bfuture_path(@bfuture) %> |
+<%= link_to 'Back', bfutures_path %>

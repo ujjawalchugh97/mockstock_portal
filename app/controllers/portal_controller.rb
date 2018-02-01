@@ -18,6 +18,8 @@ class PortalController < ApplicationController
     @r12 = ExRate.er(1,2).first.rate
     @r13 = ExRate.er(1,3).first.rate
     @r14 = ExRate.er(1,4).first.rate
+
+    @currencies = Currency.all
   end
   
   def buy_stock
@@ -168,4 +170,35 @@ class PortalController < ApplicationController
     
   	return redirect_to '/portal/index'
   end
+
+  def ex_cur
+    id_f = params[:exf][:id]
+    id_t = params[:ext][:id]
+    amt = params[:amt].to_f
+    r = ExRate.er(id_f, id_t).first.rate
+    
+    if id_f == '1'
+      current_user.balance1 = current_user.balance1 - amt
+    elsif id_f == '2'
+      current_user.balance2 = current_user.balance2 - amt
+    elsif id_f == '3'
+      current_user.balance3 = current_user.balance3 - amt
+    elsif id_f == '4'
+      current_user.balance4 = current_user.balance4 - amt
+    end
+
+    if id_t == '1'
+      current_user.balance1 = current_user.balance1 + amt*r
+    elsif id_t == '2'
+      current_user.balance2 = current_user.balance2 + amt*r
+    elsif id_t == '3'
+      current_user.balance3 = current_user.balance3 + amt*r
+    elsif id_t == '4'
+      current_user.balance4 = current_user.balance4 + amt*r
+    end
+
+    current_user.save
+    return redirect_to '/portal/index'
+  end
+
 end

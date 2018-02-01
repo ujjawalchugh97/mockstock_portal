@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stock: one
+  time: MyString
+  buying_price: 9.99
+  price_per_share: 9.99
+
+two:
+  stock: two
+  time: MyString
+  buying_price: 9.99
+  price_per_share: 9.99
