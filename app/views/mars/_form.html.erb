@@ -1,0 +1,32 @@
+<%= form_with(model: mar, local: true) do |form| %>
+  <% if mar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(mar.errors.count, "error") %> prohibited this mar from being saved:</h2>
+
+      <ul>
+      <% mar.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :mar_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :currency %>
+    <%= form.text_field :currency, id: :mar_currency %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rate %>
+    <%= form.text_field :rate, id: :mar_rate %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,5 +1,6 @@
 class Stock < ApplicationRecord
   belongs_to :market
+  belongs_to :mar
   has_many :user_stock_mappings
   has_many :users, :through => :user_stock_mappings
   has_many :user_short_mappings

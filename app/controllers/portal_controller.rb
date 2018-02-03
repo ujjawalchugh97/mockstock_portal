@@ -6,6 +6,9 @@ class PortalController < ApplicationController
     
 
     @user_m1_stocks = current_user.m1_stock_holdings
+    @user_m1_shorts = current_user.m1_short_holdings
+    @user_m1_sfutures = current_user.m1_sfuture_holdings
+    @user_m1_bfutures = current_user.m1_bfuture_holdings
 
     @m1_stocks = Stock.m_stocks(1)
   	@m2_stocks = Stock.m_stocks(2)
@@ -23,7 +26,7 @@ class PortalController < ApplicationController
   end
   
   def buy_stock
-  	stock_id = params[:stock_id]
+  	stock_id = params[:buyFormIdBuy]
   	num = params[:num].to_i
   	if num < 0
   		raise Error.new "Cannot Have negative no of shares"
@@ -172,11 +175,18 @@ class PortalController < ApplicationController
   end
 
   def ex_cur
+    #raise params.inspect
     id_f = params[:exf][:id]
     id_t = params[:ext][:id]
-    amt = params[:amt].to_f
-    r = ExRate.er(id_f, id_t).first.rate
     
+    amt = params[:amt].to_f
+    m1 = Mar.m(id_f).first
+    m2 = Mar.m(id_t).first
+    r1 = m1.rate
+    r2 = m2.rate
+    
+    r = r1/r2
+
     if id_f == '1'
       current_user.balance1 = current_user.balance1 - amt
     elsif id_f == '2'
@@ -197,6 +207,16 @@ class PortalController < ApplicationController
       current_user.balance4 = current_user.balance4 + amt*r
     end
 
+    if(m1.id != 4)
+      m1.rate = (r1+0.0000025*amt)/(1-0.00004*amt)
+    end
+
+    if(m2.id != 4)
+      m2.rate = (r2+0.000001*amt)/(1-0.0000001*amt)
+    end
+
+    m1.save
+    m2.save
     current_user.save
     return redirect_to '/portal/index'
   end

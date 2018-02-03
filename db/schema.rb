@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201142722) do
+ActiveRecord::Schema.define(version: 20180203213725) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -62,6 +62,14 @@ ActiveRecord::Schema.define(version: 20180201142722) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "mars", force: :cascade do |t|
+    t.string "name"
+    t.string "currency"
+    t.decimal "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sfutures", force: :cascade do |t|
     t.integer "stock_id"
     t.string "time"
@@ -79,6 +87,8 @@ ActiveRecord::Schema.define(version: 20180201142722) do
     t.integer "market_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "mar_id"
+    t.index ["mar_id"], name: "index_stocks_on_mar_id"
     t.index ["market_id"], name: "index_stocks_on_market_id"
   end
 
