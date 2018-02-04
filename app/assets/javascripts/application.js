@@ -28,7 +28,7 @@ $(document).ready(function () {
         $("#placePriceBuy")[0].textContent = aaya2;
         $("#LVBuy")[0].textContent = aaya3;
         $("#buyFormIdBuy")[0].value= aaya4;
-       
+
 
         $('.ui.modal.buy').modal('show', function () {
             var curPrice = $(".curPriceBuy")[0].textContent;
@@ -50,7 +50,7 @@ $(document).ready(function () {
         var aaya2 = $(this).parent().siblings().children()[1].value;
         var aaya3 = $(this).parent().siblings().children()[2].value;
         var aaya4 = $(this).parent().siblings().children()[3].value;
-        
+
         $("#companySell")[0].textContent = aaya1;
         $("#placePriceSell")[0].textContent = aaya2;
         $("#LVSell")[0].textContent = aaya3;
@@ -76,7 +76,7 @@ $(document).ready(function () {
         var aaya2 = $(this).parent().siblings().children()[1].value;
         var aaya3 = $(this).parent().siblings().children()[2].value;
         var aaya4 = $(this).parent().siblings().children()[3].value;
-        
+
         $("#companyShort")[0].textContent = aaya1;
         $("#placePriceShort")[0].textContent = aaya2;
         $("#LVShort")[0].textContent = aaya3;
@@ -140,14 +140,14 @@ a = $(".nsit-buy .field select");
         let v=a.val()
         console.log(a.val()=="")
         if(a.val()!=""){
-        console.log(v+currentValue);            
-        if(v=="AL"){
+        console.log(v+currentValue);
+        if(v=="1"){
             $('.icon-12').removeClass('dollar');
             $('.icon-12').removeClass('pound');
             $('.icon-12').removeClass('yen');
             $('.icon-12').removeClass('rupee');
             $(".icon-12").addClass("rupee");
-            
+
             var rupee = $("#rupee-coin")[0].textContent;
             $('.curPriceCoinBuy')[0].textContent = rupee;
 
@@ -163,15 +163,15 @@ a = $(".nsit-buy .field select");
                 }, 0002);
             });
         }
-        else if (v=="AK"){
+        else if (v=="2"){
             $('.icon-12').removeClass('dollar');
             $('.icon-12').removeClass('pound');
             $('.icon-12').removeClass('yen');
             $('.icon-12').removeClass('rupee');
-            $(".icon-12").addClass("dollar");  
-            
+            $(".icon-12").addClass("dollar");
+
             var dollar = $("#dollar-coin")[0].textContent;
-            $('.curPriceCoinBuy')[0].textContent = dollar; 
+            $('.curPriceCoinBuy')[0].textContent = dollar;
 
             var curPrice = $(".curPriceCoinBuy")[0].textContent;
             console.log(curPrice);
@@ -183,15 +183,15 @@ a = $(".nsit-buy .field select");
                     console.log(quantity);
                     $(".change-value-coin-buy")[0].textContent = quantity;
                 }, 0002);
-            });         
+            });
         }
-        else if (v=="AZ"){
+        else if (v=="3"){
             $('.icon-12').removeClass('dollar');
             $('.icon-12').removeClass('pound');
             $('.icon-12').removeClass('yen');
             $('.icon-12').removeClass('rupee');
-            $(".icon-12").addClass("pound");  
-            
+            $(".icon-12").addClass("pound");
+
             var pound = $("#pound-coin")[0].textContent;
             $('.curPriceCoinBuy')[0].textContent = pound;
 
@@ -205,15 +205,15 @@ a = $(".nsit-buy .field select");
                     console.log(quantity);
                     $(".change-value-coin-buy")[0].textContent = quantity;
                 }, 0002);
-            });        
+            });
         }
-        else if (v=="AR"){
+        else if (v=="4"){
             $('.icon-12').removeClass('dollar');
             $('.icon-12').removeClass('pound');
             $('.icon-12').removeClass('yen');
             $('.icon-12').removeClass('rupee');
-            $(".icon-12").addClass("yen"); 
-            
+            $(".icon-12").addClass("yen");
+
             var yen = $("#yen-coin")[0].textContent;
             $('.curPriceCoinBuy')[0].textContent = yen;
 
@@ -227,18 +227,18 @@ a = $(".nsit-buy .field select");
                     console.log(quantity);
                     $(".change-value-coin-buy")[0].textContent = quantity;
                 }, 0002);
-            });          
+            });
         }
-        
+
     }
         // console.log("hello");
-        
+
     }
     )
 
 
 
-    var currentValue = "AL";
+    var currentValue = "1";
 b = $(".nsit-sell .field select");
 // if(currentValue!=""){
     b.change(function(e){
@@ -246,8 +246,8 @@ b = $(".nsit-sell .field select");
         let v=b.val()
         // console.log(a.val()=="")
         if(b.val()!=""){
-        // console.lo1g(v+currentValue);            
-        if(v=="AL"){
+        // console.lo1g(v+currentValue);
+        if(v=="1"){
             $('.icon-13').removeClass('dollar');
             $('.icon-13').removeClass('pound');
             $('.icon-13').removeClass('yen');
@@ -269,13 +269,13 @@ b = $(".nsit-sell .field select");
                 }, 0002);
             });
         }
-        else if (v=="AK"){
+        else if (v=="2"){
             $('.icon-13').removeClass('dollar');
             $('.icon-13').removeClass('pound');
             $('.icon-13').removeClass('yen');
             $('.icon-13').removeClass('rupee');
-            $(".icon-13").addClass("dollar"); 
-            
+            $(".icon-13").addClass("dollar");
+
             var dollar = $("#dollar-coin")[0].textContent;
             $('.curPriceCoinSell')[0].textContent = dollar;
 
@@ -291,13 +291,13 @@ b = $(".nsit-sell .field select");
                 }, 0002);
             });
         }
-        else if (v=="AZ"){
+        else if (v=="3"){
             $('.icon-13').removeClass('dollar');
             $('.icon-13').removeClass('pound');
             $('.icon-13').removeClass('yen');
             $('.icon-13').removeClass('rupee');
-            $(".icon-13").addClass("pound");    
-            
+            $(".icon-13").addClass("pound");
+
             var pound = $("#pound-coin")[0].textContent;
             $('.curPriceCoinSell')[0].textContent = pound;
 
@@ -313,13 +313,13 @@ b = $(".nsit-sell .field select");
                 }, 0002);
             });
         }
-        else if (v=="AR"){
+        else if (v=="4"){
             $('.icon-13').removeClass('dollar');
             $('.icon-13').removeClass('pound');
             $('.icon-13').removeClass('yen');
             $('.icon-13').removeClass('rupee');
-            $(".icon-13").addClass("yen");       
-            
+            $(".icon-13").addClass("yen");
+
             var yen = $("#yen-coin")[0].textContent;
             $('.curPriceCoinSell')[0].textContent = yen;
 
@@ -335,10 +335,10 @@ b = $(".nsit-sell .field select");
                 }, 0002);
             });
         }
-        
+
     }
         // console.log("hello");
-        
+
     }
     )
 }
@@ -347,4 +347,3 @@ b = $(".nsit-sell .field select");
 window.addEventListener("load", function(event) {
     onBodyLoad();
 });
-

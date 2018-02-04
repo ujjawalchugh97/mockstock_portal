@@ -84,7 +84,7 @@ class PortalController < ApplicationController
     	current_user.balance4 = current_user.balance4 - investment
     end
 
-    stock.price = stock.price + 10 #TODO
+    stock.price = stock.price + 0.04*stock.num/(stock.qty_in_market+2) #TODO
     stock.qty_in_market = stock.qty_in_market + num
     current_user.save
     stock.save
@@ -133,7 +133,7 @@ class PortalController < ApplicationController
     	current_user.balance4 = current_user.balance4 + amt
     end
 
-    stock.price = stock.price - 10 #TODO
+    stock.price = stock.price - 0.04*stock.num/(stock.qty_in_market+2)
     stock.qty_in_market = stock.qty_in_market - num
     current_user.save
     stock.save
@@ -279,5 +279,28 @@ class PortalController < ApplicationController
     current_user.save
     return redirect_to '/portal/index'
   end
+
+	def buy_coin
+		id_f = params[:exf][:id]
+    amt = params[:amt].to_f
+		m1 = Mar.m(id_f).first
+
+		if id_f == '1'
+      current_user.balance1 = current_user.balance1 - amt
+    elsif id_f == '2'
+      current_user.balance2 = current_user.balance2 - amt
+    elsif id_f == '3'
+      current_user.balance3 = current_user.balance3 - amt
+    elsif id_f == '4'
+      current_user.balance4 = current_user.balance4 - amt
+    end
+
+		current_user.balance_nc1 += amt/m1.rate
+
+
+	end
+
+	def sell_coin
+	end
 
 end

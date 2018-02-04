@@ -1844,6 +1844,7 @@
                     <div class="description">
                         <table class="ui very basic collapsing celled table market-modal-table">
                             <tbody>
+                              <%= form_tag '/portal/buy_coin' do %>
                                 <tr>
                                     <td>
                                         <h4 class="ui image header">
@@ -1857,13 +1858,15 @@
                                     <td>
                                         <div class="two fields">
                                             <div class="field">
-                                                <select class="ui fluid dropdown">
+                                                <!--select class="ui fluid dropdown">
                                                     <option class="opt" value="">Rupee</option>
                                                     <option class="opt" value="AL">Rupee</option>
                                                     <option class="opt" value="AK">Dollar</option>
                                                     <option class="opt" value="AZ">Pound</option>
                                                     <option class="opt" value="AR">Yen</option>
-                                                </select>
+                                                </select-->
+                                                <%= collection_select(:exf, :id, @currencies, :id, :name,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
+
                                             </div>
                                         </div>
                                     </td>
@@ -1894,7 +1897,8 @@
                                     </td>
                                     <td>
                                         <div class="ui input focus">
-                                            <input type="text" placeholder="Enter Amount" class="amount-input-coin-buy">
+                                            <!--input type="text" placeholder="Enter Amount" class="amount-input-coin-buy"-->
+                                            <%= text_field_tag :amt, "", :class =>  "amount-input-coin-buy" %>
                                         </div>
                                     </td>
                                 </tr>
@@ -1920,7 +1924,9 @@
                     <div class="ui buttons">
                         <button class="ui button deny red">Cancel</button>
                         <div class="or"></div>
-                        <button class="ui positive button">Buy</button>
+                        <!--button class="ui positive button">Buy</button-->
+                        <%= submit_tag "Buy", :class=>"ui positive button"%>
+                        <% end %>
                     </div>
                 </div>
             </div>
@@ -1929,13 +1935,14 @@
         <div class="ui modal tiny nsit-sell">
                 <i class="close icon"></i>
                 <div class="header">
-                    Buy NSIT Coin
+                    Sell NSIT Coin
                 </div>
                 <div class="image content">
 
                     <div class="description">
                         <table class="ui very basic collapsing celled table market-modal-table">
                             <tbody>
+                              <%= form_tag '/portal/sell_coin' do %>
                                 <tr>
                                     <td>
                                         <h4 class="ui image header">
@@ -1949,13 +1956,15 @@
                                     <td>
                                         <div class="two fields">
                                             <div class="field">
-                                                <select class="ui fluid dropdown">
+                                                <!--select class="ui fluid dropdown">
                                                     <option class="opt" value="">Rupee</option>
                                                     <option class="opt" value="AL">Rupee</option>
                                                     <option class="opt" value="AK">Dollar</option>
                                                     <option class="opt" value="AZ">Pound</option>
                                                     <option class="opt" value="AR">Yen</option>
-                                                </select>
+                                                </select-->
+                                                <%= collection_select(:exf, :id, @currencies, :id, :name,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
+
                                             </div>
                                         </div>
                                     </td>
@@ -1986,7 +1995,8 @@
                                     </td>
                                     <td>
                                         <div class="ui input focus">
-                                            <input type="text" placeholder="Enter Amount" class="amount-input-coin-sell">
+                                            <!--input type="text" placeholder="Enter Amount" class="amount-input-coin-sell"-->
+                                            <%= text_field_tag :amt, "", :class =>  "amount-input-coin-sell" %>
                                         </div>
                                     </td>
                                 </tr>
@@ -2012,7 +2022,9 @@
                     <div class="ui buttons">
                         <button class="ui button deny red">Cancel</button>
                         <div class="or"></div>
-                        <button class="ui positive button">Sell</button>
+                        <!--button class="ui positive button">Sell</button-->
+                        <%= submit_tag "Sell", :class=>"ui positive button"%>
+                        <% end %>
                     </div>
                 </div>
             </div>
