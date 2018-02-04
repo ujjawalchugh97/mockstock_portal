@@ -62,7 +62,7 @@ class PortalController < ApplicationController
     # @r13 = ExRate.er(1,3).first.rate
     # @r14 = ExRate.er(1,4).first.rate
 
-    @currencies = Currency.all
+    @currencies = Mar.all
   end
 
   def buy_stock
@@ -297,6 +297,8 @@ class PortalController < ApplicationController
     end
 
 		current_user.balance_nc1 += amt/(r)
+		current_user.save
+		return redirect_to '/portal/index'
 
 
 	end
@@ -318,6 +320,7 @@ class PortalController < ApplicationController
     end
 
 		current_user.balance_nc1 -= amt/(r)
+		return redirect_to '/portal/index'
 	end
 
 end

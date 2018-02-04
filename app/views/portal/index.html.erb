@@ -618,66 +618,26 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">A
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">B
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">C
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">D
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
+                                                  <% if @user_m3_stocks != nil %>
+                                              <% @user_m3_stocks.each do |mapping| %>
+                                                  <tr>
+                                                      <td>
+                                                          <h4 class="ui header">
+                                                              <div class="content">
+                                                                  <div class="sub header"><%= mapping.stock.name %>
+                                                                  </div>
+                                                              </div>
+                                                          </h4>
+                                                      </td>
+                                                      <td>
+                                                          <%= mapping.investment %>
+                                                      </td>
+                                                      <td><%= mapping.stock.price*mapping.no_of_shares %></td>
+                                                      <td><%= mapping.no_of_shares %></td>
+                                                  </tr>
+                                                  <% end %>
+                                                  <% end %>
+
                                                 </tbody>
                                             </table>
                                             <div class="actions">
@@ -702,66 +662,27 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                  <% if @user_m3_shorts != nil %>
+                                                   <% @user_m3_shorts.each do |mapping| %>
                                                     <tr>
                                                         <td>
                                                             <h4 class="ui header">
                                                                 <div class="content">
-                                                                    <div class="sub header">A
+                                                                    <div class="sub header"><%= mapping.stock.name %>
                                                                     </div>
                                                                 </div>
                                                             </h4>
                                                         </td>
                                                         <td>
-                                                            22
+                                                            <%= mapping.investment %>
                                                         </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
+                                                        <td><%= mapping.stock.price*mapping.no_of_shares %></td>
+                                                        <td><%= mapping.no_of_shares %></td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">B
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">C
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">D
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
+                                                    <% end %>
+                                                    <% end %>
+
+
                                                 </tbody>
                                             </table>
                                             <div class="actions">
@@ -774,79 +695,61 @@
                                         <div class="ui modal info small lse3" style="text-align: center;">
                                             <i class="close icon"></i>
                                             <div class="header">
-                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">London Stock Exchange 3</h1>
+                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">London Stock Exchange Futures</h1>
                                             </div>
                                             <table class="ui very basic collapsing celled table" style="margin: 30px auto; text-align: center;">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Stock Name</th>
-                                                        <th>Investment</th>
-                                                        <th>Current Value</th>
-                                                        <th>Volume</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">A
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">B
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
+                                              <thead>
+                                                  <tr>
+                                                      <th>Stock Name</th>
+                                                      <!--th>Amount</th-->
+                                                      <th>Current Value</th>
+                                                      <th>Volume</th>
+                                                      <th>Buy/Sell</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                <% if @user_m3_sfutures != nil %>
+                                                 <% @user_m3_sfutures.each do |mapping| %>
+                                                  <tr>
+                                                      <td>
+                                                          <h4 class="ui header">
+                                                              <div class="content">
+                                                                  <div class="sub header"><%= mapping.sfuture.stock.name %>
+                                                                  </div>
+                                                              </div>
+                                                          </h4>
+                                                      </td>
+                                                      <!--td>
+
+                                                      </td-->
+                                                      <td><%= mapping.sfuture.stock.price*mapping.no_of_shares %></td>
+                                                      <td><%= mapping.no_of_shares %></td>
+                                                      <td>Sell</td>
+                                                  </tr>
+                                                  <%end%>
+                                                  <% end %>
+
+                                                  <% if @user_m3_bfutures != nil %>
+                                                   <% @user_m3_bfutures.each do |mapping| %>
                                                     <tr>
                                                         <td>
                                                             <h4 class="ui header">
                                                                 <div class="content">
-                                                                    <div class="sub header">C
+                                                                    <div class="sub header"><%= mapping.bfuture.stock.name %>
                                                                     </div>
                                                                 </div>
                                                             </h4>
                                                         </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
+                                                        <!--td>
+
+                                                        </td-->
+                                                        <td><%= mapping.bfuture.stock.price*mapping.no_of_shares %></td>
+                                                        <td><%= mapping.no_of_shares %></td>
+                                                        <td>Buy</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">D
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                </tbody>
+                                                    <%end%>
+                                                    <% end %>
+                                              </tbody>
                                             </table>
                                             <div class="actions">
                                                 <div class="ui positive right labeled icon button">
@@ -865,11 +768,15 @@
                         <div class="content">
                             <div class="cur-value">
                                 <span class="date" style="font-size: 16px;">Current Value:
-                                    <i class="pound icon"></i>3,751.00</span>
+                                  <% cur_val3 = 0 %>
+                                <% @user_m3_stocks.each do |mapping| %>
+                                <% cur_val3 += mapping.stock.price*mapping.no_of_shares %>
+                                <% end %>
+                                    <i class="pound icon"></i><%= cur_val3 %></span>
                             </div>
                             <div class="cur-value">
                                 <span class="date" style="font-size: 16px;">Cash:
-                                    <i class="pound icon"></i>2123</span>
+                                    <i class="pound icon"></i><%= current_user.balance3 %></span>
                             </div>
                         </div>
                         <div class="extra content">
@@ -888,7 +795,7 @@
                                         <div class="ui modal info small nikkie1" style="text-align: center;">
                                             <i class="close icon"></i>
                                             <div class="header">
-                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NIKKEI 1</h1>
+                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">TSE STOCKS</h1>
                                             </div>
                                             <table class="ui very basic collapsing celled table" style="margin: 30px auto; text-align: center;">
                                                 <thead>
@@ -900,66 +807,26 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">A
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">B
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">C
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">D
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
+                                                  <% if @user_m4_stocks != nil %>
+                                              <% @user_m4_stocks.each do |mapping| %>
+                                                  <tr>
+                                                      <td>
+                                                          <h4 class="ui header">
+                                                              <div class="content">
+                                                                  <div class="sub header"><%= mapping.stock.name %>
+                                                                  </div>
+                                                              </div>
+                                                          </h4>
+                                                      </td>
+                                                      <td>
+                                                          <%= mapping.investment %>
+                                                      </td>
+                                                      <td><%= mapping.stock.price*mapping.no_of_shares %></td>
+                                                      <td><%= mapping.no_of_shares %></td>
+                                                  </tr>
+                                                  <% end %>
+                                                  <% end %>
+
                                                 </tbody>
                                             </table>
                                             <div class="actions">
@@ -972,7 +839,7 @@
                                         <div class="ui modal info small nikkie2" style="text-align: center;">
                                             <i class="close icon"></i>
                                             <div class="header">
-                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NIKKEI 2</h1>
+                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">TSE SHORTS</h1>
                                             </div>
                                             <table class="ui very basic collapsing celled table" style="margin: 30px auto; text-align: center;">
                                                 <thead>
@@ -984,66 +851,27 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">A
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">B
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">C
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">D
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
+
+<% if @user_m4_shorts != nil %>
+                                                 <% @user_m4_shorts.each do |mapping| %>
+                                                  <tr>
+                                                      <td>
+                                                          <h4 class="ui header">
+                                                              <div class="content">
+                                                                  <div class="sub header"><%= mapping.stock.name %>
+                                                                  </div>
+                                                              </div>
+                                                          </h4>
+                                                      </td>
+                                                      <td>
+                                                          <%= mapping.investment %>
+                                                      </td>
+                                                      <td><%= mapping.stock.price*mapping.no_of_shares %></td>
+                                                      <td><%= mapping.no_of_shares %></td>
+                                                  </tr>
+                                                  <% end %>
+                                                  <% end %>
+
                                                 </tbody>
                                             </table>
                                             <div class="actions">
@@ -1056,79 +884,62 @@
                                         <div class="ui modal info small nikkie3" style="text-align: center;">
                                             <i class="close icon"></i>
                                             <div class="header">
-                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NIKKEI 3</h1>
+                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">TSE 3</h1>
                                             </div>
                                             <table class="ui very basic collapsing celled table" style="margin: 30px auto; text-align: center;">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Stock Name</th>
-                                                        <th>Investment</th>
-                                                        <th>Current Value</th>
-                                                        <th>Volume</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">A
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">B
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
+                                              <thead>
+                                                  <tr>
+                                                      <th>Stock Name</th>
+                                                      <!--th>Amount</th-->
+                                                      <th>Current Value</th>
+                                                      <th>Volume</th>
+                                                      <th>Buy/Sell</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                <% if @user_m4_sfutures != nil %>
+                                                 <% @user_m4_sfutures.each do |mapping| %>
+                                                  <tr>
+                                                      <td>
+                                                          <h4 class="ui header">
+                                                              <div class="content">
+                                                                  <div class="sub header"><%= mapping.sfuture.stock.name %>
+                                                                  </div>
+                                                              </div>
+                                                          </h4>
+                                                      </td>
+                                                      <!--td>
+
+                                                      </td-->
+                                                      <td><%= mapping.sfuture.stock.price*mapping.no_of_shares %></td>
+                                                      <td><%= mapping.no_of_shares %></td>
+                                                      <td>Sell</td>
+                                                  </tr>
+                                                  <%end%>
+                                                  <% end %>
+
+                                                  <% if @user_m4_bfutures != nil %>
+                                                   <% @user_m4_bfutures.each do |mapping| %>
                                                     <tr>
                                                         <td>
                                                             <h4 class="ui header">
                                                                 <div class="content">
-                                                                    <div class="sub header">C
+                                                                    <div class="sub header"><%= mapping.bfuture.stock.name %>
                                                                     </div>
                                                                 </div>
                                                             </h4>
                                                         </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
+                                                        <!--td>
+
+                                                        </td-->
+                                                        <td><%= mapping.bfuture.stock.price*mapping.no_of_shares %></td>
+                                                        <td><%= mapping.no_of_shares %></td>
+                                                        <td>Buy</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">D
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                </tbody>
+                                                    <%end%>
+                                                    <% end %>
+                                              </tbody>
+
                                             </table>
                                             <div class="actions">
                                                 <div class="ui positive right labeled icon button">
@@ -1141,17 +952,21 @@
                                 </div>
                             </div>
                             <div style="height: 120px; background-color: #E5AD06!important;">
-                                <h1 style="position: relative; top: 50%; transform: translate(0, -50%); color: beige; font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NIKKEI</h1>
+                                <h1 style="position: relative; top: 50%; transform: translate(0, -50%); color: beige; font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">TSE</h1>
                             </div>
                         </div>
                         <div class="content">
                             <div class="cur-value">
                                 <span class="date" style="font-size: 16px;">Current Value:
-                                    <i class="yen icon"></i>23,808.06</span>
+                                  <% cur_val4 = 0 %>
+                                <% @user_m4_stocks.each do |mapping| %>
+                                <% cur_val4 += mapping.stock.price*mapping.no_of_shares %>
+                                <% end %>
+                                    <i class="yen icon"></i><%= cur_val4 %></span>
                             </div>
                             <div class="cur-value">
                                 <span class="date" style="font-size: 16px;">Cash:
-                                    <i class="yen icon"></i>1213</span>
+                                    <i class="yen icon"></i><%= current_user.balance4 %</span>
                             </div>
                         </div>
                         <div class="extra content">
@@ -1836,7 +1651,10 @@
 
         <!-- modal collections for nsit coin -->
         <!-- buy modal starts -->
+
+
         <div class="ui modal tiny nsit-buy">
+          <%= form_tag '/portal/buy_coin' do %>
                 <i class="close icon"></i>
                 <div class="header">
                     Buy NSIT Coin
@@ -1846,7 +1664,6 @@
                     <div class="description">
                         <table class="ui very basic collapsing celled table market-modal-table">
                             <tbody>
-                              <%= form_tag '/portal/buy_coin' do %>
                                 <tr>
                                     <td>
                                         <h4 class="ui image header">
@@ -1867,7 +1684,7 @@
                                                     <option class="opt" value="AZ">Pound</option>
                                                     <option class="opt" value="AR">Yen</option>
                                                 </select-->
-                                                <%= collection_select(:exf, :id, @currencies, :id, :name,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
+                                                <%= collection_select(:exf, :id, @currencies, :id, :currency,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
 
                                             </div>
                                         </div>
@@ -1928,9 +1745,10 @@
                         <div class="or"></div>
                         <!--button class="ui positive button">Buy</button-->
                         <%= submit_tag "Buy", :class=>"ui positive button"%>
-                        <% end %>
+
                     </div>
                 </div>
+                <% end %>
             </div>
         <!-- buy modal ends -->
         <!-- buy modal starts -->
@@ -1965,7 +1783,7 @@
                                                     <option class="opt" value="AZ">Pound</option>
                                                     <option class="opt" value="AR">Yen</option>
                                                 </select-->
-                                                <%= collection_select(:exf, :id, @currencies, :id, :name,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
+                                                <%= collection_select(:exf, :id, @currencies, :id, :currency,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
 
                                             </div>
                                         </div>
@@ -2325,7 +2143,7 @@
                         <div class="field">
 
                             <label style="font-weight: 600;">From</label>
-                            <%= collection_select(:exf, :id, @currencies, :id, :name,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
+                            <%= collection_select(:exf, :id, @currencies, :id, :currency,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
                             <!--select class="ui fluid dropdown" name = "ex_from" id = "ex_from">
 
                                 <option value="">Rupee</option>
@@ -2341,7 +2159,7 @@
                     <div class="two fields">
                         <div class="field">
                             <label style="font-weight: 600;">To</label>
-                            <%= collection_select(:ext, :id, @currencies, :id, :name,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
+                            <%= collection_select(:ext, :id, @currencies, :id, :currency,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
                             <!--select class="ui fluid dropdown" name = "ex_to" id = "ex_to">
                                 <option value="">Rupee</option>
                                 <option value="1">Rupee</option>
@@ -2377,6 +2195,7 @@
 
             </div>
             <% end %>
+
             <!-- FOREIGN EXCHANGE ENDS HERE -->
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
