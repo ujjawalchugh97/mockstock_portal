@@ -85,7 +85,7 @@ class PortalController < ApplicationController
     end
 		StockHistory.create(:stock_id => stock_id, :buy => 1, :no_of_shares => num)
 		a = StockHistory.all.order_by(created_at: :desc)
-		if(a.size % 5 == 0){
+		if(a.size % 5 == 0)
 				sum = 0
 				i = 1
 				while(i<=5){
@@ -94,7 +94,9 @@ class PortalController < ApplicationController
 						sum += a[i-1].no_of_shares * (0.2)
 					else
 						sum -= a[i-1].no_of_shares * (0.3)
-				}
+					end
+				end
+			end
 				sum *= 0.002
 				stock.price = stock.price*(1+sum)
 		}
@@ -149,16 +151,18 @@ class PortalController < ApplicationController
 
 		StockHistory.create(:stock_id => stock_id, :buy => 0, :no_of_shares => num)
 		a = StockHistory.all.order_by(created_at: :desc)
-		if(a.size % 5 == 0){
+		if(a.size % 5 == 0)
 				sum = 0
 				i = 1
-				while(i<=5){
+				while(i<=5)
 					i++
 					if(a[i-1].buy == 1)
 						sum += a[i-1].no_of_shares * (0.2)
 					else
 						sum -= a[i-1].no_of_shares * (0.3)
-				}
+					end
+				end
+			end
 				sum *= 0.002
 				stock.price = stock.price*(1+sum)
 		}
