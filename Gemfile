@@ -11,7 +11,7 @@ gem 'rails', '~> 5.1.2'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 #Use sqlite3 for development purposes
-group :development, :test do
+# group :development, :test do
   gem 'sqlite3'
 end
 

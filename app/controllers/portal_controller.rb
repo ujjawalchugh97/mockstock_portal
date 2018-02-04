@@ -35,10 +35,10 @@ class PortalController < ApplicationController
 		@r53 = ExRate.er(5,3).first.rate
 		@r54 = ExRate.er(5,4).first.rate
 
-		m1 = Mar.m(1)
-		m2 = Mar.m(2)
-		m3 = Mar.m(3)
-		m4 = Mar.m(4)
+		m1 = Mar.m(1).first
+		m2 = Mar.m(2).first
+		m3 = Mar.m(3).first
+		m4 = Mar.m(4).first
 		@r11 = 1
 		@r12 = m1.rate/m2.rate
 		@r13 = m1.rate/m3.rate
@@ -283,7 +283,8 @@ class PortalController < ApplicationController
 	def buy_coin
 		id_f = params[:exf][:id]
     amt = params[:amt].to_f
-		m1 = Mar.m(id_f).first
+		r = ExRate.er(5,id_f).first.rate
+
 
 		if id_f == '1'
       current_user.balance1 = current_user.balance1 - amt
@@ -295,12 +296,28 @@ class PortalController < ApplicationController
       current_user.balance4 = current_user.balance4 - amt
     end
 
-		current_user.balance_nc1 += amt/m1.rate
+		current_user.balance_nc1 += amt/(r)
 
 
 	end
 
 	def sell_coin
+		id_f = params[:exf][:id]
+    amt = params[:amt].to_f
+		r = ExRate.er(5,id_f).first.rate
+
+
+		if id_f == '1'
+      current_user.balance1 = current_user.balance1 + amt
+    elsif id_f == '2'
+      current_user.balance2 = current_user.balance2 + amt
+    elsif id_f == '3'
+      current_user.balance3 = current_user.balance3 + amt
+    elsif id_f == '4'
+      current_user.balance4 = current_user.balance4 + amt
+    end
+
+		current_user.balance_nc1 -= amt/(r)
 	end
 
 end
