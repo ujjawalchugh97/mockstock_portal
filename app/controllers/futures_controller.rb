@@ -33,7 +33,7 @@ class FuturesController < ApplicationController
   	bfuture_id = params[:bfuture_id]
   	m = UserBfutureMapping.where(:id => bfuture_id).first
   	u = m.user
-  	f = m.sfuture
+  	f = m.bfuture
 
   	if f.stock.market_id == 1
     	u.balance1 = u.balance1 - (f.buying_price - f.stock.price)*m.no_of_shares - (f.price_per_share*m.no_of_shares)
