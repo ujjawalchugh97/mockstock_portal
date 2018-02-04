@@ -22,9 +22,11 @@ Rails.application.routes.draw do
   post '/portal/sell_stock' => 'portal#sell_stock'
   post '/portal/short_stock' => 'portal#short_stock'
   post '/portal/buy_sfuture' => 'portal#buy_sfuture'
+  post '/portal/buy_bfuture' => 'portal#buy_bfuture'
   post '/portal/ex_cur' => 'portal#ex_cur'
   post '/shorts/execute' => 'shorts#execute'
   post '/futures/execute_s' => 'futures#execute_s'
+  post '/futures/execute_b' => 'futures#execute_b'
   post '/market/new' => 'market#new'
 
 end

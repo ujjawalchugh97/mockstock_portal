@@ -1771,22 +1771,57 @@
                                 <th>Selling Price</th>
                                 <th>Time</th>
                                 <th>Price per share</th>
+                                <th colspan = "3"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                          <% i = 1 %>
+                          <% @sfutures.each do |f| %>
+                          <tr>
+                              <td><%= i %></td> <% i = i+1 %>
+                              <td> <%= f.stock.name %> </td>
+                              <td><%= f.selling_price %></td>
+                              <td><%= f.time %></td>
+                              <td><%= f.price_per_share %></td>
+                              <%= form_tag '/portal/buy_sfuture' do %>
+                              <%= hidden_field_tag :future_id , f.id %>
+                              <td><%= text_field_tag :num %></td>
+                              <td><%= submit_tag "Buy" %></td>
+                              </tr>
+                              <% end %>
+
+                        </tbody>
+                    </table>
+                    <br>
+                    <table class="ui blue table">
+                        <thead>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Comapany Name</th>
+                                <th>Buying Price</th>
+                                <th>Time</th>
+                                <th>Price per share</th>
                                 <th></th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td>0101</td>
-                                <td>Apple Inc.</td>
-                                <td>400</td>
-                                <td>20</td>
-                            </tr>
-                            <tr>
-                                <td>1010</td>
-                                <td>Ikea</td>
-                                <td>900</td>
-                                <td>30</td>
-                            </tr>
+                          <% i = 1 %>
+                          <% @bfutures.each do |f| %>
+                          <tr>
+                              <td><%= i %></td> <% i = i+1 %>
+                              <td> <%= f.stock.name %> </td>
+                              <td><%= f.selling_price %></td>
+                              <td><%= f.time %></td>
+                              <td><%= f.price_per_share %></td>
+                              <%= form_tag '/portal/buy_bfuture' do %>
+                              <%= hidden_field_tag :future_id , f.id %>
+                              <td><%= text_field_tag :num %></td>
+                              <td><%= submit_tag "Buy" %></td>
+                              </tr>
+                              <% end %>
+
                         </tbody>
                     </table>
                 </div>
