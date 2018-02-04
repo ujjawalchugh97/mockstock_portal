@@ -139,7 +139,7 @@
                                         <div class="ui modal info small nse1" style="text-align: center;">
                                             <i class="close icon"></i>
                                             <div class="header">
-                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NSE STOCKS </h1>
+                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NSE STOCKS</h1>
                                             </div>
                                             <table class="ui very basic collapsing celled table" style="margin: 30px auto; text-align: center;">
                                                 <thead>
@@ -239,7 +239,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                <% if @user_m1_shorts != nil %> 
+                                                <% if @user_m1_shorts != nil %>
                                                    <% @user_m1_shorts.each do |mapping| %>
                                                     <tr>
                                                         <td>
@@ -328,7 +328,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <% if @user_m1_sfutures != nil %> 
+                                                  <% if @user_m1_sfutures != nil %>
                                                    <% @user_m1_sfutures.each do |mapping| %>
                                                     <tr>
                                                         <td>
@@ -340,7 +340,7 @@
                                                             </h4>
                                                         </td>
                                                         <!--td>
-                                                            
+
                                                         </td-->
                                                         <td><%= mapping.sfuture.stock.price*mapping.no_of_shares %></td>
                                                         <td><%= mapping.no_of_shares %></td>
@@ -348,6 +348,27 @@
                                                     </tr>
                                                     <%end%>
                                                     <% end %>
+
+                                                    <% if @user_m1_bfutures != nil %>
+                                                     <% @user_m1_bfutures.each do |mapping| %>
+                                                      <tr>
+                                                          <td>
+                                                              <h4 class="ui header">
+                                                                  <div class="content">
+                                                                      <div class="sub header"><%= mapping.bfuture.stock.name %>
+                                                                      </div>
+                                                                  </div>
+                                                              </h4>
+                                                          </td>
+                                                          <!--td>
+
+                                                          </td-->
+                                                          <td><%= mapping.bfuture.stock.price*mapping.no_of_shares %></td>
+                                                          <td><%= mapping.no_of_shares %></td>
+                                                          <td>Buy</td>
+                                                      </tr>
+                                                      <%end%>
+                                                      <% end %>
                                                 </tbody>
                                             </table>
                                             <div class="actions">
@@ -394,7 +415,7 @@
                                         <div class="ui modal info small nasdaq1" style="text-align: center;">
                                             <i class="close icon"></i>
                                             <div class="header">
-                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NASDAQ1</h1>
+                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NASDAQ STOCKS</h1>
                                             </div>
                                             <table class="ui very basic collapsing celled table" style="margin: 30px auto; text-align: center;">
                                                 <thead>
@@ -406,66 +427,25 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">A
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">B
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">C
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">D
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
+                                                  <% if @user_m2_stocks != nil %>
+                                                  <% @user_m2_stocks.each do |mapping| %>
+                                                      <tr>
+                                                          <td>
+                                                              <h4 class="ui header">
+                                                                  <div class="content">
+                                                                      <div class="sub header"><%= mapping.stock.name %>
+                                                                      </div>
+                                                                  </div>
+                                                              </h4>
+                                                          </td>
+                                                          <td>
+                                                              <%= mapping.investment %>
+                                                          </td>
+                                                          <td><%= mapping.stock.price*mapping.no_of_shares %></td>
+                                                          <td><%= mapping.no_of_shares %></td>
+                                                      </tr>
+                                                      <% end %>
+                                                      <% end %>
                                                 </tbody>
                                             </table>
                                             <div class="actions">
@@ -478,7 +458,7 @@
                                         <div class="ui modal info small nasdaq2" style="text-align: center;">
                                             <i class="close icon"></i>
                                             <div class="header">
-                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NASDAQ2</h1>
+                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NASDAQ SHORTS</h1>
                                             </div>
                                             <table class="ui very basic collapsing celled table" style="margin: 30px auto; text-align: center;">
                                                 <thead>
@@ -490,66 +470,27 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">A
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">B
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">C
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">D
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
+                                                  <% if @user_m2_shorts != nil %>
+                                                 <% @user_m2_shorts.each do |mapping| %>
+                                                  <tr>
+                                                      <td>
+                                                          <h4 class="ui header">
+                                                              <div class="content">
+                                                                  <div class="sub header"><%= mapping.stock.name %>
+                                                                  </div>
+                                                              </div>
+                                                          </h4>
+                                                      </td>
+                                                      <td>
+                                                          <%= mapping.investment %>
+                                                      </td>
+                                                      <td><%= mapping.stock.price*mapping.no_of_shares %></td>
+                                                      <td><%= mapping.no_of_shares %></td>
+                                                  </tr>
+                                                  <% end %>
+                                                  <% end %>
+
+
                                                 </tbody>
                                             </table>
                                             <div class="actions">
@@ -562,79 +503,62 @@
                                         <div class="ui modal info small nasdaq3" style="text-align: center;">
                                             <i class="close icon"></i>
                                             <div class="header">
-                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NASDAQ3</h1>
+                                                <h1 style=" font-family: 'Raleway', sans-serif !important; font-weight: 100; letter-spacing: 0.1em;">NASDAQ FUTURES</h1>
                                             </div>
                                             <table class="ui very basic collapsing celled table" style="margin: 30px auto; text-align: center;">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Stock Name</th>
-                                                        <th>Investment</th>
-                                                        <th>Current Value</th>
-                                                        <th>Volume</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">A
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">B
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
+                                              <thead>
+                                                  <tr>
+                                                      <th>Stock Name</th>
+                                                      <!--th>Amount</th-->
+                                                      <th>Current Value</th>
+                                                      <th>Volume</th>
+                                                      <th>Buy/Sell</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                <% if @user_m2_sfutures != nil %>
+                                                 <% @user_m2_sfutures.each do |mapping| %>
+                                                  <tr>
+                                                      <td>
+                                                          <h4 class="ui header">
+                                                              <div class="content">
+                                                                  <div class="sub header"><%= mapping.sfuture.stock.name %>
+                                                                  </div>
+                                                              </div>
+                                                          </h4>
+                                                      </td>
+                                                      <!--td>
+
+                                                      </td-->
+                                                      <td><%= mapping.sfuture.stock.price*mapping.no_of_shares %></td>
+                                                      <td><%= mapping.no_of_shares %></td>
+                                                      <td>Sell</td>
+                                                  </tr>
+                                                  <%end%>
+                                                  <% end %>
+
+                                                  <% if @user_m2_bfutures != nil %>
+                                                   <% @user_m2_bfutures.each do |mapping| %>
                                                     <tr>
                                                         <td>
                                                             <h4 class="ui header">
                                                                 <div class="content">
-                                                                    <div class="sub header">C
+                                                                    <div class="sub header"><%= mapping.bfuture.stock.name %>
                                                                     </div>
                                                                 </div>
                                                             </h4>
                                                         </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
+                                                        <!--td>
+
+                                                        </td-->
+                                                        <td><%= mapping.bfuture.stock.price*mapping.no_of_shares %></td>
+                                                        <td><%= mapping.no_of_shares %></td>
+                                                        <td>Buy</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4 class="ui header">
-                                                                <div class="content">
-                                                                    <div class="sub header">D
-                                                                    </div>
-                                                                </div>
-                                                            </h4>
-                                                        </td>
-                                                        <td>
-                                                            22
-                                                        </td>
-                                                        <td>22</td>
-                                                        <td>22</td>
-                                                    </tr>
-                                                </tbody>
+                                                    <%end%>
+                                                    <% end %>
+                                              </tbody>
+
                                             </table>
                                             <div class="actions">
                                                 <div class="ui positive right labeled icon button">
@@ -653,13 +577,13 @@
                         <div class="content">
                             <div class="cur-value">
                                 <span class="date" style="font-size: 16px;">Current Value:
-                                <% cur_val1 = 0 %>
-                                <% if @user_m1_stocks != nil %>
-                                <% @user_m1_stocks.each do |mapping| %>
-                                <% cur_val1 += mapping.stock.price*mapping.no_of_shares %>
+                                <% cur_val2 = 0 %>
+                                <% if @user_m2_stocks != nil %>
+                                <% @user_m2_stocks.each do |mapping| %>
+                                <% cur_val2 += mapping.stock.price*mapping.no_of_shares %>
                                 <% end %>
                                 <% end %>
-                                    <i class="dollar icon"></i><% cur_val1 %></span>
+                                    <i class="dollar icon"></i><% cur_val2 %></span>
                             </div>
                             <div class="cur-value">
                                 <span class="date" style="font-size: 16px;">Cash:
@@ -1272,7 +1196,7 @@
                                 <i class="dollar icon"></i>
                             </h1>
                             <span class="date" style="font-size: 13px;">Cur. Value:
-                                <i class="dollar icon"></i>1</span>
+                                <i class="dollar icon"></i><%= @r52*current_user.balance_nc1 %></span>
                             <br>
                             <br>
                             <span class="date" style="font-size: 13px;">Investment:
@@ -1284,7 +1208,7 @@
                                 <i class="pound icon"></i>
                             </h1>
                             <span class="date" style="font-size: 13px;">Cur. Value:
-                                <i class="pound icon"></i>0.72</span>
+                                <i class="pound icon"></i><%= @r53*current_user.balance_nc1 %></span>
                             <br>
                             <br>
                             <span class="date" style="font-size: 13px;">Investment:
@@ -1296,7 +1220,7 @@
                                 <i class="yen icon"></i>
                             </h1>
                             <span class="date" style="font-size: 13px;">Cur. Value:
-                                <i class="yen icon"></i>110.78</span>
+                                <i class="yen icon"></i><%= @r54*current_user.balance_nc1 %></span>
                             <br>
                             <br>
                             <span class="date" style="font-size: 13px;">Investment:
@@ -1318,7 +1242,7 @@
         <!-- modals collection starts -->
         <!-- buy starts -->
         <div class="ui modal tiny buy">
-        
+
                 <i class="close icon"></i>
                 <div class="header">
                     Buy Share
@@ -1401,7 +1325,7 @@
                         </table>
                     </div>
                 </div>
-                
+
                 <!--input value = "" id = "buyFormIdBuy"-->
                 <%= hidden_field_tag :buyFormIdBuy , 80 %>
                 <div class="actions">
@@ -1433,6 +1357,7 @@
                                     <a class="section" id="companySell">Apple Inc.</a>
                                 </div>
                             </div>
+                            <%= form_tag '/portal/sell_stock' do %>
                             <table class="ui very basic collapsing celled table market-modal-table">
                                 <tbody>
                                     <tr>
@@ -1475,7 +1400,8 @@
                                         </td>
                                         <td>
                                             <div class="ui input focus">
-                                                <input type="text" placeholder="Enter Quantity" class="amount-input-sell">
+                                                <!--input type="text" placeholder="Enter Quantity" class="amount-input-sell"-->
+                                                <%= text_field_tag :num, "", :class => "amount-input-sell" %>
                                             </div>
                                         </td>
                                     </tr>
@@ -1497,17 +1423,23 @@
                             </table>
                         </div>
                     </div>
-                    <input value = "" id = "buyFormIdSell">
+                    <!--input value = "" id = "buyFormIdSell"-->
+                    <%= hidden_field_tag :buyFormIdSell , 80 %>
                     <div class="actions">
                         <div class="ui buttons">
                             <button class="ui button deny red">Cancel</button>
                             <div class="or"></div>
-                            <button class="ui positive button">Sell</button>
+                            <!--button class="ui positive button">Sell</button-->
+                            <%= submit_tag "Sell", :class=>"ui positive button" %>
+
                         </div>
                     </div>
-                </div> 
+                    <% end %>
+                </div>
+
+
                 <!-- sell ends -->
-                
+
                 <!-- short -->
              <div class="ui modal tiny short">
                     <i class="close icon"></i>
@@ -1524,6 +1456,7 @@
                                     <a class="section" id="companyShort">Apple Inc.</a>
                                 </div>
                             </div>
+                            <%= form_tag '/portal/short_stock' do %>
                             <table class="ui very basic collapsing celled table market-modal-table">
                                 <tbody>
                                     <tr>
@@ -1567,6 +1500,7 @@
                                         <td>
                                             <div class="ui input focus">
                                                 <input type="text" placeholder="Enter Quantity" class="amount-input-short">
+                                                <%= text_field_tag :num, "", :class => "amount-input-short" %>
                                             </div>
                                         </td>
                                     </tr>
@@ -1588,15 +1522,24 @@
                             </table>
                         </div>
                     </div>
-                    <input value = "" id = "buyFormIdShort">
+
+
+                                        <!--input value = "" id = "buyFormIdShort"-->
+
+                    <%= hidden_field_tag :buyFormIdShort , 80 %>
                     <div class="actions">
                         <div class="ui buttons">
                             <button class="ui button deny red">Cancel</button>
                             <div class="or"></div>
-                            <button class="ui positive button">Sell</button>
+                            <!--button class="ui positive button">Sell</button-->
+                            <%= submit_tag "Short", :class=>"ui positive button" %>
+
                         </div>
                     </div>
-                </div> 
+                    <% end %>
+                </div>
+
+
                 <!-- short ends -->
         <!-- modals collection ends -->
 
@@ -1632,21 +1575,21 @@
                                         <td><%= m1_stock.price %></td>
                                         <td>20
                                             <span>
-                                                <!--input type="hidden" value="hello" class="hiddenInput"> 
-                                                <input type="" value="400" class="hiddenInput"> 
-                                                <input type="" value="20" class="hiddenInput"> 
+                                                <!--input type="hidden" value="hello" class="hiddenInput">
+                                                <input type="" value="400" class="hiddenInput">
+                                                <input type="" value="20" class="hiddenInput">
                                                 <input value = "9" class = "hiddenInput"-->
                                                 <%= hidden_field_tag :stock_id_market_list , m1_stock.name %>
                                                 <%= hidden_field_tag :stock_price_market_list , m1_stock.price %>
                                                 <%= hidden_field_tag :stock_id_market_list , 20 %>
-                                                <%= hidden_field_tag :stock_id_market_id ,  m1_stock.id %>  
+                                                <%= hidden_field_tag :stock_id_market_id ,  m1_stock.id %>
                                             </span>
 
                                             <span style="float: right;">
                                                 <button class="ui inverted green button buy-btn">BUY</button>
                                                 <button class="ui inverted red button sell-btn">SELL</button>
                                                 <button class="ui inverted orange button short-btn">SHORT</button>
-                        
+
                                             </span>
                                         </td>
                                     </tr>
@@ -1657,9 +1600,9 @@
                                         <td>900</td>
                                         <td>30
                                                 <span>
-                                                    <input type="" value="bye" class="hiddenInput"> 
-                                                    <input type="" value="800" class="hiddenInput"> 
-                                                    <input type="" value="40" class="hiddenInput"> 
+                                                    <input type="" value="bye" class="hiddenInput">
+                                                    <input type="" value="800" class="hiddenInput">
+                                                    <input type="" value="40" class="hiddenInput">
                                                     <input type="" value="18" class="hiddenInput">
                                                 </span>
                                             <span style="float: right;">
@@ -2122,7 +2065,7 @@
                         <div class="or"></div>
                         <button class="ui negative button nsit-sell-button">Sell</button>
                     </div>
-                    
+
                     <!-- <div class="ui modal tiny nsit-sell">
                         <i class="close icon"></i>
                         <div class="header">
@@ -2325,15 +2268,15 @@
             </div>
             <%= form_tag '/portal/ex_cur' do %>
             <div class="row" style="margin-top: 30px;">
-            
+
                 <div class="four wide column">
                     <div class="two fields">
                         <div class="field">
-                        
+
                             <label style="font-weight: 600;">From</label>
                             <%= collection_select(:exf, :id, @currencies, :id, :name,  {:include_blank => "Please select Currency"}, {:class=>'ui fluid dropdown'}) %>
                             <!--select class="ui fluid dropdown" name = "ex_from" id = "ex_from">
-                            
+
                                 <option value="">Rupee</option>
                                 <option value="1">Rupee</option>
                                 <option value="2">Dollar</option>
@@ -2510,7 +2453,7 @@
     </script>
     <script src="./market.js"></script>
     <script src="./change-value.js"></script>
-    
+
     <script>
         let myChart = document.getElementById('myChart').getContext('2d');
 

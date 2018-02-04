@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stock: one
+  buy: 1
+  no_of_shares: 9.99
+
+two:
+  stock: two
+  buy: 1
+  no_of_shares: 9.99

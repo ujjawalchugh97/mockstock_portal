@@ -1,30 +1,48 @@
 class PortalController < ApplicationController
 	before_action :authenticate_user!
-  
+
   def index
-  	@r51 = ExRate.er(5,1).first.rate
-    
+
+
 
     @user_m1_stocks = current_user.m1_stock_holdings
     @user_m1_shorts = current_user.m1_short_holdings
     @user_m1_sfutures = current_user.m1_sfuture_holdings
     @user_m1_bfutures = current_user.m1_bfuture_holdings
+		@user_m2_stocks = current_user.m2_stock_holdings
+    @user_m2_shorts = current_user.m2_short_holdings
+    @user_m2_sfutures = current_user.m2_sfuture_holdings
+    @user_m2_bfutures = current_user.m2_bfuture_holdings
+		@user_m3_stocks = current_user.m3_stock_holdings
+		@user_m3_shorts = current_user.m3_short_holdings
+		@user_m3_sfutures = current_user.m3_sfuture_holdings
+		@user_m3_bfutures = current_user.m3_bfuture_holdings
+		@user_m4_stocks = current_user.m4_stock_holdings
+		@user_m4_shorts = current_user.m4_short_holdings
+		@user_m4_sfutures = current_user.m4_sfuture_holdings
+		@user_m4_bfutures = current_user.m4_bfuture_holdings
 
     @m1_stocks = Stock.m_stocks(1)
   	@m2_stocks = Stock.m_stocks(2)
   	@m3_stocks = Stock.m_stocks(3)
   	@m4_stocks = Stock.m_stocks(4)
   	@sfutures = Sfuture.all
+		@bfutures = Bfuture.all
 
-    @r15 = ExRate.er(1,5).first.rate 
-    
-    @r12 = ExRate.er(1,2).first.rate
-    @r13 = ExRate.er(1,3).first.rate
-    @r14 = ExRate.er(1,4).first.rate
+		@r51 = ExRate.er(5,1).first.rate
+		@r52 = ExRate.er(5,2).first.rate
+		@r53 = ExRate.er(5,3).first.rate
+		@r54 = ExRate.er(5,4).first.rate
+
+		#@r15 = ExRate.er(1,5).first.rate
+
+    # @r12 = ExRate.er(1,2).first.rate
+    # @r13 = ExRate.er(1,3).first.rate
+    # @r14 = ExRate.er(1,4).first.rate
 
     @currencies = Currency.all
   end
-  
+
   def buy_stock
   	stock_id = params[:buyFormIdBuy]
   	num = params[:num].to_i
@@ -33,7 +51,7 @@ class PortalController < ApplicationController
   	end
   	stock = Stock.where(:id => stock_id).first
   	investment = stock.price*num
-  	
+
   	if stock.market_id == 1
     	current_user.balance1 = current_user.balance1 - investment
     elsif stock.market_id == 2
@@ -48,9 +66,9 @@ class PortalController < ApplicationController
     stock.qty_in_market = stock.qty_in_market + num
     current_user.save
     stock.save
-    
+
     stock_mapping = UserStockMapping.where(:user_id => current_user.id, :stock_id => stock_id).first
-    unless stock_mapping  
+    unless stock_mapping
       UserStockMapping.create(:user_id => current_user.id, stock_id: stock_id, no_of_shares: num, investment: investment)
     else
       stock_mapping.no_of_shares = stock_mapping.no_of_shares + num
@@ -62,7 +80,7 @@ class PortalController < ApplicationController
   end
 
   def sell_stock
-  	stock_id = params[:stock_id]
+  	stock_id = params[:buyFormIdSell]
   	num = params[:num].to_i
   	stock = Stock.where(:id => stock_id).first
   	amt = stock.price*num
@@ -72,7 +90,7 @@ class PortalController < ApplicationController
   	end
 
   	stock_mapping = UserStockMapping.where(:user_id => current_user.id, :stock_id => stock_id).first
-    unless stock_mapping  
+    unless stock_mapping
     	raise Error.new "You don't own the stock"
     else
       stock_mapping.no_of_shares = stock_mapping.no_of_shares - num
@@ -82,14 +100,14 @@ class PortalController < ApplicationController
       	stock_mapping.destroy
       end
     end
-  	
-  	if stock.market_id == 1
+
+  	if stock.mar_id == 1
     	current_user.balance1 = current_user.balance1 + amt
-    elsif stock.market_id == 2
+    elsif stock.mar_id == 2
     	current_user.balance2 = current_user.balance2 + amt
-    elsif stock.market_id == 3
+    elsif stock.mar_id == 3
     	current_user.balance3 = current_user.balance3 + amt
-    elsif stock.market_id == 4
+    elsif stock.mar_id == 4
     	current_user.balance4 = current_user.balance4 + amt
     end
 
@@ -97,7 +115,7 @@ class PortalController < ApplicationController
     stock.qty_in_market = stock.qty_in_market - num
     current_user.save
     stock.save
-    
+
   	return redirect_to '/portal/index'
   end
 
@@ -111,16 +129,16 @@ class PortalController < ApplicationController
   	if num < 0
   		raise Error.new "Cannot Have negative no of shares"
   	end
-  	
+
   	short_mapping = UserShortMapping.where(:user_id => current_user.id, :stock_id => stock_id).first
-    unless short_mapping  
+    unless short_mapping
     	UserShortMapping.create(:user_id => current_user.id, stock_id: stock_id, no_of_shares: num, amt: amt)
     else
       short_mapping.no_of_shares = stock_mapping.no_of_shares + num
       short_mapping.amt = stock_mapping.amt + amt
       short_mapping.save
     end
-  	
+
   	#if stock.market_id == 1
     #	current_user.balance1 = current_user.balance1 + amt
     #elsif stock.market_id == 2
@@ -135,7 +153,7 @@ class PortalController < ApplicationController
     #stock.qty_in_market = stock.qty_in_market - num
     #current_user.save
     #stock.save
-    
+
   	return redirect_to '/portal/index'
   end
 
@@ -147,15 +165,15 @@ class PortalController < ApplicationController
   	if num < 0
   		raise Error.new "Cannot Have negative no of shares"
   	end
-  	
+
   	future_mapping = UserSfutureMapping.where(:user_id => current_user.id, :sfuture_id => future_id).first
-    unless future_mapping  
+    unless future_mapping
     	UserSfutureMapping.create(:user_id => current_user.id, sfuture_id: future_id, no_of_shares: num)
     else
       future_mapping.no_of_shares = future_mapping.no_of_shares + num
       future_mapping.save
     end
-  	
+
   	#if stock.market_id == 1
     #	current_user.balance1 = current_user.balance1 + amt
     #elsif stock.market_id == 2
@@ -170,7 +188,7 @@ class PortalController < ApplicationController
     #stock.qty_in_market = stock.qty_in_market - num
     #current_user.save
     #stock.save
-    
+
   	return redirect_to '/portal/index'
   end
 
@@ -178,13 +196,13 @@ class PortalController < ApplicationController
     #raise params.inspect
     id_f = params[:exf][:id]
     id_t = params[:ext][:id]
-    
+
     amt = params[:amt].to_f
     m1 = Mar.m(id_f).first
     m2 = Mar.m(id_t).first
     r1 = m1.rate
     r2 = m2.rate
-    
+
     r = r1/r2
 
     if id_f == '1'

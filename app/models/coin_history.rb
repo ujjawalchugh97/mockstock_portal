@@ -1,0 +1,2 @@
+class CoinHistory < ApplicationRecord
+end
