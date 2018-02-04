@@ -83,8 +83,21 @@ class PortalController < ApplicationController
     elsif stock.market_id == 4
     	current_user.balance4 = current_user.balance4 - investment
     end
-
-    stock.price = stock.price + 0.04*num/(stock.qty_in_market+2) #TODO
+		StockHistory.create(:stock_id => stock_id, :buy => 1, :no_of_shares => num)
+		a = StockHistory.all.order_by(created_at: :desc)
+		if(a.size % 5 == 0){
+				sum = 0
+				i = 1
+				while(i<=5){
+					i++
+					if(a[i-1].buy == 1)
+						sum += a[i-1].no_of_shares * (0.2)
+					else
+						sum -= a[i-1].no_of_shares * (0.3)
+				}
+				sum *= 0.002
+				stock.price = stock.price*(1+sum)
+		}
     stock.qty_in_market = stock.qty_in_market + num
     current_user.save
     stock.save
@@ -97,6 +110,7 @@ class PortalController < ApplicationController
       stock_mapping.investment = stock_mapping.investment + investment
       stock_mapping.save
     end
+
 
   	return redirect_to '/portal/index'
   end
@@ -133,7 +147,22 @@ class PortalController < ApplicationController
     	current_user.balance4 = current_user.balance4 + amt
     end
 
-    stock.price = stock.price - 0.04*num/(stock.qty_in_market+2)
+		StockHistory.create(:stock_id => stock_id, :buy => 0, :no_of_shares => num)
+		a = StockHistory.all.order_by(created_at: :desc)
+		if(a.size % 5 == 0){
+				sum = 0
+				i = 1
+				while(i<=5){
+					i++
+					if(a[i-1].buy == 1)
+						sum += a[i-1].no_of_shares * (0.2)
+					else
+						sum -= a[i-1].no_of_shares * (0.3)
+				}
+				sum *= 0.002
+				stock.price = stock.price*(1+sum)
+		}
+
     stock.qty_in_market = stock.qty_in_market - num
     current_user.save
     stock.save

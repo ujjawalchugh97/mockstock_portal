@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204010501) do
+ActiveRecord::Schema.define(version: 20180204075531) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -172,10 +172,10 @@ ActiveRecord::Schema.define(version: 20180204010501) do
     t.string "namep2"
     t.string "contactp1", default: "", null: false
     t.string "contactp2"
-    t.decimal "balance1", default: "500000.0"
-    t.decimal "balance2", default: "500000.0"
-    t.decimal "balance3", default: "500000.0"
-    t.decimal "balance4", default: "500000.0"
+    t.decimal "balance1", default: "1000000.0"
+    t.decimal "balance2", default: "50000.0"
+    t.decimal "balance3", default: "40000.0"
+    t.decimal "balance4", default: "1200000.0"
     t.decimal "balance_nc1", default: "0.0"
     t.decimal "balance_nc2", default: "0.0"
     t.decimal "balance_nc3", default: "0.0"
