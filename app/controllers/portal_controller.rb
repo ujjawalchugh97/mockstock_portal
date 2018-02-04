@@ -26,6 +26,7 @@ class PortalController < ApplicationController
   	@m2_stocks = Stock.m_stocks(2)
   	@m3_stocks = Stock.m_stocks(3)
   	@m4_stocks = Stock.m_stocks(4)
+
   	@sfutures = Sfuture.all
 		@bfutures = Bfuture.all
 
@@ -33,6 +34,27 @@ class PortalController < ApplicationController
 		@r52 = ExRate.er(5,2).first.rate
 		@r53 = ExRate.er(5,3).first.rate
 		@r54 = ExRate.er(5,4).first.rate
+
+		m1 = Mar.m(1)
+		m2 = Mar.m(2)
+		m3 = Mar.m(3)
+		m4 = Mar.m(4)
+		@r11 = 1
+		@r12 = m1.rate/m2.rate
+		@r13 = m1.rate/m3.rate
+		@r14 = m1.rate/m4.rate
+		@r21 = m2.rate/m1.rate
+		@r22 = m2.rate/m2.rate
+		@r23 = m2.rate/m3.rate
+		@r24 = m2.rate/m4.rate
+		@r31 = m3.rate/m1.rate
+		@r32 = m3.rate/m2.rate
+		@r33 = m3.rate/m3.rate
+		@r34 = m3.rate/m4.rate
+		@r41 = m4.rate/m1.rate
+		@r42 = m4.rate/m2.rate
+		@r43 = m4.rate/m3.rate
+		@r44 = m4.rate/m4.rate
 
 		#@r15 = ExRate.er(1,5).first.rate
 
@@ -99,7 +121,6 @@ class PortalController < ApplicationController
       if stock_mapping.no_of_shares == 0
       	stock_mapping.destroy
       end
-    end
 
   	if stock.mar_id == 1
     	current_user.balance1 = current_user.balance1 + amt
@@ -173,6 +194,24 @@ class PortalController < ApplicationController
       future_mapping.no_of_shares = future_mapping.no_of_shares + num
       future_mapping.save
     end
+
+		def buy_bfuture
+	  	future_id = params[:future_id]
+	  	num = params[:num].to_i
+	  	future = Bfuture.where(:id => future_id).first
+
+	  	if num < 0
+	  		raise Error.new "Cannot Have negative no of shares"
+	  	end
+
+	  	future_mapping = UserBfutureMapping.where(:user_id => current_user.id, :bfuture_id => future_id).first
+	    unless future_mapping
+	    	UserBfutureMapping.create(:user_id => current_user.id, bfuture_id: future_id, no_of_shares: num)
+	    else
+	      future_mapping.no_of_shares = future_mapping.no_of_shares + num
+	      future_mapping.save
+	    end
+
 
   	#if stock.market_id == 1
     #	current_user.balance1 = current_user.balance1 + amt
