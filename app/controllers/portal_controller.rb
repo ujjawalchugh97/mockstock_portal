@@ -40,21 +40,37 @@ class PortalController < ApplicationController
 		m3 = Mar.m(3).first
 		m4 = Mar.m(4).first
 		@r11 = 1
+		@r11.round(2)
 		@r12 = m1.rate/m2.rate
+		@r12.round(2)
 		@r13 = m1.rate/m3.rate
+		@r13.round(2)
 		@r14 = m1.rate/m4.rate
+		@r14.round(2)
 		@r21 = m2.rate/m1.rate
+		@r21.round(2)
 		@r22 = m2.rate/m2.rate
+		@r22.round(2)
 		@r23 = m2.rate/m3.rate
+		@r23.round(2)
 		@r24 = m2.rate/m4.rate
+		@r24.round(2)
 		@r31 = m3.rate/m1.rate
+		@r31.round(2)
 		@r32 = m3.rate/m2.rate
+		@r32.round(2)
 		@r33 = m3.rate/m3.rate
+		@r33.round(2)
 		@r34 = m3.rate/m4.rate
+		@r34.round(2)
 		@r41 = m4.rate/m1.rate
+		@r41.round(2)
 		@r42 = m4.rate/m2.rate
+		@r42.round(2)
 		@r43 = m4.rate/m3.rate
+		@r43.round(2)
 		@r44 = m4.rate/m4.rate
+		@r44.round(2)
 
 		#@r15 = ExRate.er(1,5).first.rate
 
