@@ -84,7 +84,7 @@ class PortalController < ApplicationController
     	current_user.balance4 = current_user.balance4 - investment
     end
 
-    stock.price = stock.price + 0.04*stock.num/(stock.qty_in_market+2) #TODO
+    stock.price = stock.price + 0.04*num/(stock.qty_in_market+2) #TODO
     stock.qty_in_market = stock.qty_in_market + num
     current_user.save
     stock.save
@@ -133,7 +133,7 @@ class PortalController < ApplicationController
     	current_user.balance4 = current_user.balance4 + amt
     end
 
-    stock.price = stock.price - 0.04*stock.num/(stock.qty_in_market+2)
+    stock.price = stock.price - 0.04*num/(stock.qty_in_market+2)
     stock.qty_in_market = stock.qty_in_market - num
     current_user.save
     stock.save

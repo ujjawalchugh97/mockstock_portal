@@ -97,6 +97,9 @@ $(document).ready(function () {
         });
     });
 
+    $('.close1').click(()=>{
+      return 0;
+    })
     //nsit buy button in nsit coin section
     $(".nsit-buy-button").on('click', function () {
         $('.ui.modal.tiny.nsit-buy').modal('show', function () {
