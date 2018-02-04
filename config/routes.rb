@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'market/index'
+
   resources :mars
   resources :bfutures
   resources :ex_rates
@@ -23,5 +25,6 @@ Rails.application.routes.draw do
   post '/portal/ex_cur' => 'portal#ex_cur'
   post '/shorts/execute' => 'shorts#execute'
   post '/futures/execute_s' => 'futures#execute_s'
-  
+  post '/market/new' => 'market#new'
+
 end

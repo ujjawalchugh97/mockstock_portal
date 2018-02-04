@@ -10,7 +10,7 @@ end
 gem 'rails', '~> 5.1.2'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
-# Use sqlite3 for development purposes
+#Use sqlite3 for development purposes
 group :development, :test do
   gem 'sqlite3'
 end
@@ -19,6 +19,12 @@ end
 group :production do
    gem 'pg', '0.20.0'
 end
+
+
+
+
+
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
