@@ -118,7 +118,8 @@ class PortalController < ApplicationController
       stock_mapping.no_of_shares = stock_mapping.no_of_shares - num
       stock_mapping.investment = stock_mapping.investment - amt
       stock_mapping.save
-      if stock_mapping.no_of_shares == 0
+		end
+			if stock_mapping.no_of_shares == 0
       	stock_mapping.destroy
       end
 
@@ -194,6 +195,7 @@ class PortalController < ApplicationController
       future_mapping.no_of_shares = future_mapping.no_of_shares + num
       future_mapping.save
     end
+	end
 
 		def buy_bfuture
 	  	future_id = params[:future_id]
