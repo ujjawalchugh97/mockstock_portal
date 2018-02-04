@@ -88,7 +88,7 @@ class PortalController < ApplicationController
 		if(a.size % 5 == 0)
 				sum = 0
 				i = 1
-				while(i<=5){
+				while(i<=5)
 					i++
 					if(a[i-1].buy == 1)
 						sum += a[i-1].no_of_shares * (0.2)
@@ -96,10 +96,10 @@ class PortalController < ApplicationController
 						sum -= a[i-1].no_of_shares * (0.3)
 					end
 				end
-			end
 				sum *= 0.002
 				stock.price = stock.price*(1+sum)
-		}
+			end
+
     stock.qty_in_market = stock.qty_in_market + num
     current_user.save
     stock.save
@@ -162,14 +162,14 @@ class PortalController < ApplicationController
 						sum -= a[i-1].no_of_shares * (0.3)
 					end
 				end
-			end
 				sum *= 0.002
 				stock.price = stock.price*(1+sum)
-		}
+
+			end
 
     stock.qty_in_market = stock.qty_in_market - num
+		stock.save
     current_user.save
-    stock.save
 
   	return redirect_to '/portal/index'
   end
@@ -316,8 +316,8 @@ class PortalController < ApplicationController
 	def buy_coin
 		id_f = params[:exf][:id]
     amt = params[:amt].to_f
-		r = ExRate.er(5,id_f).first.rate
-
+		m = ExRate.er(5,id_f).first
+		r = m.rate
 
 		if id_f == '1'
       current_user.balance1 = current_user.balance1 - amt
@@ -329,6 +329,25 @@ class PortalController < ApplicationController
       current_user.balance4 = current_user.balance4 - amt
     end
 
+		CoinHistory.create(:buy => 1, :no_of_shares => num)
+		a = CoinHistory.all.order_by(created_at: :desc)
+		if(a.size % 3 == 0)
+				sum = 0
+				i = 1
+				while(i<=3)
+					i++
+					if(a[i-1].buy == 1)
+						sum += a[i-1].no_of_shares * (0.6)
+					else
+						sum -= a[i-1].no_of_shares * (0.5)
+					end
+				end
+				sum *= 0.004
+				m.rate = 	m.rate(1+sum)
+				m.save
+			end
+
+
 		current_user.balance_nc1 += amt/(r)
 		current_user.save
 		return redirect_to '/portal/index'
@@ -339,8 +358,8 @@ class PortalController < ApplicationController
 	def sell_coin
 		id_f = params[:exf][:id]
     amt = params[:amt].to_f
-		r = ExRate.er(5,id_f).first.rate
-
+		m = ExRate.er(5,id_f).first
+		r = m.rate
 
 		if id_f == '1'
       current_user.balance1 = current_user.balance1 + amt
@@ -351,6 +370,24 @@ class PortalController < ApplicationController
     elsif id_f == '4'
       current_user.balance4 = current_user.balance4 + amt
     end
+
+		CoinHistory.create(:buy => 0, :no_of_shares => num)
+		a = CoinHistory.all.order_by(created_at: :desc)
+		if(a.size % 3 == 0)
+				sum = 0
+				i = 1
+				while(i<=3)
+					i++
+					if(a[i-1].buy == 1)
+						sum += a[i-1].no_of_shares * (0.6)
+					else
+						sum -= a[i-1].no_of_shares * (0.5)
+					end
+				end
+				sum *= 0.004
+				m.rate = 	m.rate(1+sum)
+				m.save
+			end
 
 		current_user.balance_nc1 -= amt/(r)
 		return redirect_to '/portal/index'
