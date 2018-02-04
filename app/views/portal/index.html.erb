@@ -1377,7 +1377,7 @@
                                         <th>S.No.</th>
                                         <th>Comapany Name</th>
                                         <th>Current Price</th>
-                                        <th>Last Volume</th>
+
                                     </tr>
                                 </thead>
 
@@ -1388,7 +1388,7 @@
                                         <td><%= i %></td> <% i = i+1 %>
                                         <td> <%= m1_stock.name %> </td>
                                         <td><%= m1_stock.price %></td>
-                                        <td>20
+
                                             <span>
                                                 <!--input type="hidden" value="hello" class="hiddenInput">
                                                 <input type="" value="400" class="hiddenInput">
@@ -1426,7 +1426,7 @@
                                                 <button class="ui inverted orange button short-btn">SHORT</button>
                                             </span>
                                         </td>
-                                    </tr>
+                                    </tr-->
                                 </tbody>
                             </table>
                         </div>
@@ -1444,34 +1444,36 @@
                                         <th>Scrip</th>
                                         <th>Comapany Name</th>
                                         <th>Current Price</th>
-                                        <th>Last Volume</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>0101</td>
-                                        <td>Apple Inc.</td>
-                                        <td>400</td>
-                                        <td>20
-                                            <span style="float: right;">
-                                                <button class="ui inverted green button buy-btn">BUY</button>
-                                                <button class="ui inverted red button sell-btn">SELL</button>
-                                                <button class="ui inverted orange button short-btn">SHORT</button>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1010</td>
-                                        <td>Ikea</td>
-                                        <td>900</td>
-                                        <td>30
-                                            <span style="float: right;">
-                                                <button class="ui inverted green button buy-btn">BUY</button>
-                                                <button class="ui inverted red button sell-btn">SELL</button>
-                                                <button class="ui inverted orange button short-btn">SHORT</button>
-                                            </span>
-                                        </td>
-                                    </tr-->
+                                  <% i = 1 %>
+                                  <% @m2_stocks.each do |m1_stock| %>
+                                  <tr>
+                                      <td><%= i %></td> <% i = i+1 %>
+                                      <td> <%= m1_stock.name %> </td>
+                                      <td><%= m1_stock.price %></td>
+
+                                          <span>
+                                              <!--input type="hidden" value="hello" class="hiddenInput">
+                                              <input type="" value="400" class="hiddenInput">
+                                              <input type="" value="20" class="hiddenInput">
+                                              <input value = "9" class = "hiddenInput"-->
+                                              <%= hidden_field_tag :stock_id_market_list , m1_stock.name %>
+                                              <%= hidden_field_tag :stock_price_market_list , m1_stock.price %>
+                                              <%= hidden_field_tag :stock_id_market_list , 20 %>
+                                              <%= hidden_field_tag :stock_id_market_id ,  m1_stock.id %>
+                                          </span>
+
+                                          <span style="float: right;">
+                                              <button class="ui inverted green button buy-btn">BUY</button>
+                                              <button class="ui inverted red button sell-btn">SELL</button>
+                                              <button class="ui inverted orange button short-btn">SHORT</button>
+
+                                          </span>
+                                      </td>
+                                  </tr>
+                                  <%end%>
                                 </tbody>
                             </table>
                         </div>
@@ -1489,40 +1491,43 @@
                                         <th>Scrip</th>
                                         <th>Comapany Name</th>
                                         <th>Current Price</th>
-                                        <th>Last Volume</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>0101</td>
-                                        <td>Apple Inc.</td>
-                                        <td>400</td>
-                                        <td>20
-                                            <span style="float: right;">
-                                                <button class="ui inverted green button buy-btn">BUY</button>
-                                                <button class="ui inverted red button sell-btn">SELL</button>
-                                                <button class="ui inverted orange button short-btn">SHORT</button>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1010</td>
-                                        <td>Ikea</td>
-                                        <td>900</td>
-                                        <td>30
-                                            <span style="float: right;">
-                                                <button class="ui inverted green button buy-btn">BUY</button>
-                                                <button class="ui inverted red button sell-btn">SELL</button>
-                                                <button class="ui inverted orange button short-btn">SHORT</button>
-                                            </span>
-                                        </td>
-                                    </tr>
+                                  <% i = 1 %>
+                                  <% @m3_stocks.each do |m1_stock| %>
+                                  <tr>
+                                      <td><%= i %></td> <% i = i+1 %>
+                                      <td> <%= m1_stock.name %> </td>
+                                      <td><%= m1_stock.price %></td>
+
+                                          <span>
+                                              <!--input type="hidden" value="hello" class="hiddenInput">
+                                              <input type="" value="400" class="hiddenInput">
+                                              <input type="" value="20" class="hiddenInput">
+                                              <input value = "9" class = "hiddenInput"-->
+                                              <%= hidden_field_tag :stock_id_market_list , m1_stock.name %>
+                                              <%= hidden_field_tag :stock_price_market_list , m1_stock.price %>
+                                              <%= hidden_field_tag :stock_id_market_list , 20 %>
+                                              <%= hidden_field_tag :stock_id_market_id ,  m1_stock.id %>
+                                          </span>
+
+                                          <span style="float: right;">
+                                              <button class="ui inverted green button buy-btn">BUY</button>
+                                              <button class="ui inverted red button sell-btn">SELL</button>
+                                              <button class="ui inverted orange button short-btn">SHORT</button>
+
+                                          </span>
+                                      </td>
+                                  </tr>
+                                  <%end%>
                                 </tbody>
                             </table>
                         </div>
                         <div class="title">
                             <i class="dropdown icon"></i>
-                            NIKKEI
+                            TSE
                             <span style="float: right;">Currency:
                                 <i class="yen icon"></i>
                             </span>
@@ -1534,34 +1539,37 @@
                                         <th>Scrip</th>
                                         <th>Comapany Name</th>
                                         <th>Current Price</th>
-                                        <th>Last Volume</th>
+                                        <!-- <th>Last Volume</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>0101</td>
-                                        <td>Apple Inc.</td>
-                                        <td>400</td>
-                                        <td>20
-                                            <span style="float: right;">
-                                                <button class="ui inverted green button buy-btn">BUY</button>
-                                                <button class="ui inverted red button sell-btn">SELL</button>
-                                                <button class="ui inverted orange button short-btn">SHORT</button>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1010</td>
-                                        <td>Ikea</td>
-                                        <td>900</td>
-                                        <td>30
-                                            <span style="float: right;">
-                                                <button class="ui inverted green button buy-btn">BUY</button>
-                                                <button class="ui inverted red button sell-btn">SELL</button>
-                                                <button class="ui inverted orange button short-btn">SHORT</button>
-                                            </span>
-                                        </td>
-                                    </tr>
+                                  <% i = 1 %>
+                                  <% @m4_stocks.each do |m1_stock| %>
+                                  <tr>
+                                      <td><%= i %></td> <% i = i+1 %>
+                                      <td> <%= m1_stock.name %> </td>
+                                      <td><%= m1_stock.price %></td>
+
+                                          <span>
+                                              <!--input type="hidden" value="hello" class="hiddenInput">
+                                              <input type="" value="400" class="hiddenInput">
+                                              <input type="" value="20" class="hiddenInput">
+                                              <input value = "9" class = "hiddenInput"-->
+                                              <%= hidden_field_tag :stock_id_market_list , m1_stock.name %>
+                                              <%= hidden_field_tag :stock_price_market_list , m1_stock.price %>
+                                              <%= hidden_field_tag :stock_id_market_list , 20 %>
+                                              <%= hidden_field_tag :stock_id_market_id ,  m1_stock.id %>
+                                          </span>
+
+                                          <span style="float: right;">
+                                              <button class="ui inverted green button buy-btn">BUY</button>
+                                              <button class="ui inverted red button sell-btn">SELL</button>
+                                              <button class="ui inverted orange button short-btn">SHORT</button>
+
+                                          </span>
+                                      </td>
+                                  </tr>
+                                  <%end%>
                                 </tbody>
                             </table>
                         </div>
