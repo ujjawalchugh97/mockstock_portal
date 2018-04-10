@@ -1,0 +1,18 @@
+
+<h1>Market#index</h1>
+<p>Find me in app/views/market/index.html.erb</p>
+<%= form_tag '/market/new' do %>
+<%= text_field_tag :a %>
+<%= submit_tag "OK" %>
+<% end %>
+<br><br><br>
+<table>
+  <% if @b != nil %>
+  <% @b.each do |b| %>
+  <tr>
+      <td> <%= b.name %> </td>
+      <td><%= b.id %></td>
+  </tr>
+    <% end %>
+    <% end %>
+  </table>

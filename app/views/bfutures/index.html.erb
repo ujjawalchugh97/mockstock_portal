@@ -16,7 +16,7 @@
   <tbody>
     <% @bfutures.each do |bfuture| %>
       <tr>
-        <td><%= bfuture.stock %></td>
+        <td><%= bfuture.stock.name %></td>
         <td><%= bfuture.time %></td>
         <td><%= bfuture.buying_price %></td>
         <td><%= bfuture.price_per_share %></td>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180203213725) do
+ActiveRecord::Schema.define(version: 20180204075531) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 20180203213725) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["stock_id"], name: "index_bfutures_on_stock_id"
+  end
+
+  create_table "coin_histories", force: :cascade do |t|
+    t.integer "buy"
+    t.decimal "no_of_shares"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "currencies", force: :cascade do |t|
@@ -80,6 +87,15 @@ ActiveRecord::Schema.define(version: 20180203213725) do
     t.index ["stock_id"], name: "index_sfutures_on_stock_id"
   end
 
+  create_table "stock_histories", force: :cascade do |t|
+    t.integer "stock_id"
+    t.integer "buy"
+    t.decimal "no_of_shares"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stock_id"], name: "index_stock_histories_on_stock_id"
+  end
+
   create_table "stocks", force: :cascade do |t|
     t.string "name"
     t.integer "qty_in_market"
@@ -115,7 +131,7 @@ ActiveRecord::Schema.define(version: 20180203213725) do
   create_table "user_short_mappings", force: :cascade do |t|
     t.integer "user_id"
     t.integer "stock_id"
-    t.integer "no_of_shares"
+    t.decimal "no_of_shares"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "amt"
@@ -126,7 +142,7 @@ ActiveRecord::Schema.define(version: 20180203213725) do
   create_table "user_stock_mappings", force: :cascade do |t|
     t.integer "user_id"
     t.integer "stock_id"
-    t.integer "no_of_shares"
+    t.decimal "no_of_shares"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "investment"
@@ -156,10 +172,10 @@ ActiveRecord::Schema.define(version: 20180203213725) do
     t.string "namep2"
     t.string "contactp1", default: "", null: false
     t.string "contactp2"
-    t.decimal "balance1", default: "500000.0"
-    t.decimal "balance2", default: "500000.0"
-    t.decimal "balance3", default: "500000.0"
-    t.decimal "balance4", default: "500000.0"
+    t.decimal "balance1", default: "1000000.0"
+    t.decimal "balance2", default: "50000.0"
+    t.decimal "balance3", default: "40000.0"
+    t.decimal "balance4", default: "1200000.0"
     t.decimal "balance_nc1", default: "0.0"
     t.decimal "balance_nc2", default: "0.0"
     t.decimal "balance_nc3", default: "0.0"

@@ -1,30 +1,86 @@
 class PortalController < ApplicationController
 	before_action :authenticate_user!
-  
+
   def index
-  	@r51 = ExRate.er(5,1).first.rate
-    
+
+
 
     @user_m1_stocks = current_user.m1_stock_holdings
     @user_m1_shorts = current_user.m1_short_holdings
     @user_m1_sfutures = current_user.m1_sfuture_holdings
     @user_m1_bfutures = current_user.m1_bfuture_holdings
+		@user_m2_stocks = current_user.m2_stock_holdings
+    @user_m2_shorts = current_user.m2_short_holdings
+    @user_m2_sfutures = current_user.m2_sfuture_holdings
+    @user_m2_bfutures = current_user.m2_bfuture_holdings
+		@user_m3_stocks = current_user.m3_stock_holdings
+		@user_m3_shorts = current_user.m3_short_holdings
+		@user_m3_sfutures = current_user.m3_sfuture_holdings
+		@user_m3_bfutures = current_user.m3_bfuture_holdings
+		@user_m4_stocks = current_user.m4_stock_holdings
+		@user_m4_shorts = current_user.m4_short_holdings
+		@user_m4_sfutures = current_user.m4_sfuture_holdings
+		@user_m4_bfutures = current_user.m4_bfuture_holdings
 
     @m1_stocks = Stock.m_stocks(1)
   	@m2_stocks = Stock.m_stocks(2)
   	@m3_stocks = Stock.m_stocks(3)
   	@m4_stocks = Stock.m_stocks(4)
+
   	@sfutures = Sfuture.all
+		@bfutures = Bfuture.all
 
-    @r15 = ExRate.er(1,5).first.rate 
-    
-    @r12 = ExRate.er(1,2).first.rate
-    @r13 = ExRate.er(1,3).first.rate
-    @r14 = ExRate.er(1,4).first.rate
+		@r51 = ExRate.er(5,1).first.rate
+		@r52 = ExRate.er(5,2).first.rate
+		@r53 = ExRate.er(5,3).first.rate
+		@r54 = ExRate.er(5,4).first.rate
 
-    @currencies = Currency.all
+		m1 = Mar.m(1).first
+		m2 = Mar.m(2).first
+		m3 = Mar.m(3).first
+		m4 = Mar.m(4).first
+		@r11 = 1
+		@r11.round(2)
+		@r12 = m1.rate/m2.rate
+		@r12.round(2)
+		@r13 = m1.rate/m3.rate
+		@r13.round(2)
+		@r14 = m1.rate/m4.rate
+		@r14.round(2)
+		@r21 = m2.rate/m1.rate
+		@r21.round(2)
+		@r22 = m2.rate/m2.rate
+		@r22.round(2)
+		@r23 = m2.rate/m3.rate
+		@r23.round(2)
+		@r24 = m2.rate/m4.rate
+		@r24.round(2)
+		@r31 = m3.rate/m1.rate
+		@r31.round(2)
+		@r32 = m3.rate/m2.rate
+		@r32.round(2)
+		@r33 = m3.rate/m3.rate
+		@r33.round(2)
+		@r34 = m3.rate/m4.rate
+		@r34.round(2)
+		@r41 = m4.rate/m1.rate
+		@r41.round(2)
+		@r42 = m4.rate/m2.rate
+		@r42.round(2)
+		@r43 = m4.rate/m3.rate
+		@r43.round(2)
+		@r44 = m4.rate/m4.rate
+		@r44.round(2)
+
+		#@r15 = ExRate.er(1,5).first.rate
+
+    # @r12 = ExRate.er(1,2).first.rate
+    # @r13 = ExRate.er(1,3).first.rate
+    # @r14 = ExRate.er(1,4).first.rate
+
+    @currencies = Mar.all
   end
-  
+
   def buy_stock
   	stock_id = params[:buyFormIdBuy]
   	num = params[:num].to_i
@@ -33,7 +89,7 @@ class PortalController < ApplicationController
   	end
   	stock = Stock.where(:id => stock_id).first
   	investment = stock.price*num
-  	
+
   	if stock.market_id == 1
     	current_user.balance1 = current_user.balance1 - investment
     elsif stock.market_id == 2
@@ -43,14 +99,29 @@ class PortalController < ApplicationController
     elsif stock.market_id == 4
     	current_user.balance4 = current_user.balance4 - investment
     end
+		StockHistory.create(:stock_id => stock_id, :buy => 1, :no_of_shares => num)
+		a = StockHistory.all.order_by(created_at: :desc)
+		if(a.size % 5 == 0)
+				sum = 0
+				i = 1
+				while(i<=5)
+					i++
+					if(a[i-1].buy == 1)
+						sum += a[i-1].no_of_shares * (0.2)
+					else
+						sum -= a[i-1].no_of_shares * (0.3)
+					end
+				end
+				sum *= 0.002
+				stock.price = stock.price*(1+sum)
+			end
 
-    stock.price = stock.price + 10 #TODO
     stock.qty_in_market = stock.qty_in_market + num
     current_user.save
     stock.save
-    
+
     stock_mapping = UserStockMapping.where(:user_id => current_user.id, :stock_id => stock_id).first
-    unless stock_mapping  
+    unless stock_mapping
       UserStockMapping.create(:user_id => current_user.id, stock_id: stock_id, no_of_shares: num, investment: investment)
     else
       stock_mapping.no_of_shares = stock_mapping.no_of_shares + num
@@ -58,11 +129,12 @@ class PortalController < ApplicationController
       stock_mapping.save
     end
 
+
   	return redirect_to '/portal/index'
   end
 
   def sell_stock
-  	stock_id = params[:stock_id]
+  	stock_id = params[:buyFormIdSell]
   	num = params[:num].to_i
   	stock = Stock.where(:id => stock_id).first
   	amt = stock.price*num
@@ -72,32 +144,49 @@ class PortalController < ApplicationController
   	end
 
   	stock_mapping = UserStockMapping.where(:user_id => current_user.id, :stock_id => stock_id).first
-    unless stock_mapping  
+    unless stock_mapping
     	raise Error.new "You don't own the stock"
     else
       stock_mapping.no_of_shares = stock_mapping.no_of_shares - num
       stock_mapping.investment = stock_mapping.investment - amt
       stock_mapping.save
-      if stock_mapping.no_of_shares == 0
+		end
+			if stock_mapping.no_of_shares == 0
       	stock_mapping.destroy
       end
-    end
-  	
-  	if stock.market_id == 1
+
+  	if stock.mar_id == 1
     	current_user.balance1 = current_user.balance1 + amt
-    elsif stock.market_id == 2
+    elsif stock.mar_id == 2
     	current_user.balance2 = current_user.balance2 + amt
-    elsif stock.market_id == 3
+    elsif stock.mar_id == 3
     	current_user.balance3 = current_user.balance3 + amt
-    elsif stock.market_id == 4
+    elsif stock.mar_id == 4
     	current_user.balance4 = current_user.balance4 + amt
     end
 
-    stock.price = stock.price - 10 #TODO
+		StockHistory.create(:stock_id => stock_id, :buy => 0, :no_of_shares => num)
+		a = StockHistory.all.order_by(created_at: :desc)
+		if(a.size % 5 == 0)
+				sum = 0
+				i = 1
+				while(i<=5)
+					i++
+					if(a[i-1].buy == 1)
+						sum += a[i-1].no_of_shares * (0.2)
+					else
+						sum -= a[i-1].no_of_shares * (0.3)
+					end
+				end
+				sum *= 0.002
+				stock.price = stock.price*(1+sum)
+
+			end
+
     stock.qty_in_market = stock.qty_in_market - num
+		stock.save
     current_user.save
-    stock.save
-    
+
   	return redirect_to '/portal/index'
   end
 
@@ -111,16 +200,16 @@ class PortalController < ApplicationController
   	if num < 0
   		raise Error.new "Cannot Have negative no of shares"
   	end
-  	
+
   	short_mapping = UserShortMapping.where(:user_id => current_user.id, :stock_id => stock_id).first
-    unless short_mapping  
+    unless short_mapping
     	UserShortMapping.create(:user_id => current_user.id, stock_id: stock_id, no_of_shares: num, amt: amt)
     else
       short_mapping.no_of_shares = stock_mapping.no_of_shares + num
       short_mapping.amt = stock_mapping.amt + amt
       short_mapping.save
     end
-  	
+
   	#if stock.market_id == 1
     #	current_user.balance1 = current_user.balance1 + amt
     #elsif stock.market_id == 2
@@ -135,7 +224,7 @@ class PortalController < ApplicationController
     #stock.qty_in_market = stock.qty_in_market - num
     #current_user.save
     #stock.save
-    
+
   	return redirect_to '/portal/index'
   end
 
@@ -147,15 +236,34 @@ class PortalController < ApplicationController
   	if num < 0
   		raise Error.new "Cannot Have negative no of shares"
   	end
-  	
+
   	future_mapping = UserSfutureMapping.where(:user_id => current_user.id, :sfuture_id => future_id).first
-    unless future_mapping  
+    unless future_mapping
     	UserSfutureMapping.create(:user_id => current_user.id, sfuture_id: future_id, no_of_shares: num)
     else
       future_mapping.no_of_shares = future_mapping.no_of_shares + num
       future_mapping.save
     end
-  	
+	end
+
+		def buy_bfuture
+	  	future_id = params[:future_id]
+	  	num = params[:num].to_i
+	  	future = Bfuture.where(:id => future_id).first
+
+	  	if num < 0
+	  		raise Error.new "Cannot Have negative no of shares"
+	  	end
+
+	  	future_mapping = UserBfutureMapping.where(:user_id => current_user.id, :bfuture_id => future_id).first
+	    unless future_mapping
+	    	UserBfutureMapping.create(:user_id => current_user.id, bfuture_id: future_id, no_of_shares: num)
+	    else
+	      future_mapping.no_of_shares = future_mapping.no_of_shares + num
+	      future_mapping.save
+	    end
+
+
   	#if stock.market_id == 1
     #	current_user.balance1 = current_user.balance1 + amt
     #elsif stock.market_id == 2
@@ -170,7 +278,7 @@ class PortalController < ApplicationController
     #stock.qty_in_market = stock.qty_in_market - num
     #current_user.save
     #stock.save
-    
+
   	return redirect_to '/portal/index'
   end
 
@@ -178,13 +286,13 @@ class PortalController < ApplicationController
     #raise params.inspect
     id_f = params[:exf][:id]
     id_t = params[:ext][:id]
-    
+
     amt = params[:amt].to_f
     m1 = Mar.m(id_f).first
     m2 = Mar.m(id_t).first
     r1 = m1.rate
     r2 = m2.rate
-    
+
     r = r1/r2
 
     if id_f == '1'
@@ -220,5 +328,85 @@ class PortalController < ApplicationController
     current_user.save
     return redirect_to '/portal/index'
   end
+
+	def buy_coin
+		id_f = params[:exf][:id]
+    amt = params[:amt].to_f
+		m = ExRate.er(5,id_f).first
+		r = m.rate
+
+		if id_f == '1'
+      current_user.balance1 = current_user.balance1 - amt
+    elsif id_f == '2'
+      current_user.balance2 = current_user.balance2 - amt
+    elsif id_f == '3'
+      current_user.balance3 = current_user.balance3 - amt
+    elsif id_f == '4'
+      current_user.balance4 = current_user.balance4 - amt
+    end
+
+		CoinHistory.create(:buy => 1, :no_of_shares => num)
+		a = CoinHistory.all.order_by(created_at: :desc)
+		if(a.size % 3 == 0)
+				sum = 0
+				i = 1
+				while(i<=3)
+					i++
+					if(a[i-1].buy == 1)
+						sum += a[i-1].no_of_shares * (0.6)
+					else
+						sum -= a[i-1].no_of_shares * (0.5)
+					end
+				end
+				sum *= 0.004
+				m.rate = 	m.rate(1+sum)
+				m.save
+			end
+
+
+		current_user.balance_nc1 += amt/(r)
+		current_user.save
+		return redirect_to '/portal/index'
+
+
+	end
+
+	def sell_coin
+		id_f = params[:exf][:id]
+    amt = params[:amt].to_f
+		m = ExRate.er(5,id_f).first
+		r = m.rate
+
+		if id_f == '1'
+      current_user.balance1 = current_user.balance1 + amt
+    elsif id_f == '2'
+      current_user.balance2 = current_user.balance2 + amt
+    elsif id_f == '3'
+      current_user.balance3 = current_user.balance3 + amt
+    elsif id_f == '4'
+      current_user.balance4 = current_user.balance4 + amt
+    end
+
+		CoinHistory.create(:buy => 0, :no_of_shares => num)
+		a = CoinHistory.all.order_by(created_at: :desc)
+		if(a.size % 3 == 0)
+				sum = 0
+				i = 1
+				while(i<=3)
+					i++
+					if(a[i-1].buy == 1)
+						sum += a[i-1].no_of_shares * (0.6)
+					else
+						sum -= a[i-1].no_of_shares * (0.5)
+					end
+				end
+				sum *= 0.004
+				m.rate = 	m.rate(1+sum)
+				m.save
+			end
+
+		current_user.balance_nc1 -= amt/(r)
+		return redirect_to '/portal/index'
+	end
 
 end

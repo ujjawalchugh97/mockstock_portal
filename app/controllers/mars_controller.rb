@@ -1,6 +1,6 @@
 class MarsController < ApplicationController
   before_action :set_mar, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
   # GET /mars
   # GET /mars.json
   def index
